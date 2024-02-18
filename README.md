@@ -6,3 +6,8 @@ ignoresAllFilesOrFoldersStartingWithThisText*
 
 # Temel Linux Komutları
 https://www.tjhsst.edu/~dhyatt/superap/unixcmd.html
+
+
+# Update/Upload code to Github
+Click Source Control(CTRL+SHIFT+G)
+Click Commit
