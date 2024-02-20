@@ -100,7 +100,10 @@ workspace_folder/        -- WORKSPACE
 It will create a beginner_tutorials folder which contains a package.xml and a CMakeLists.txt
 
 > cd ~/catkin_ws
-> catkin_make           building the packages in the workspace, under /opt/ros/noetic
+
+> catkin_make           build any catkin projects found in the src folder(by default) in the workspace
+> catkin_make --source my_src
+
 > . ~/catkin_ws/devel/setup.bash                To add the workspace to your ROS environment you need to source the generated setup file
 
 
