@@ -95,6 +95,7 @@ workspace_folder/        -- WORKSPACE
       package.xml        -- Package manifest for package_n
 
 ## Creating Catkin Package - A package named beginner_tutorials package which depends on std_msgs, rospy, and roscpp
+> cd src
 > catkin_create_pkg beginner_tutorials std_msgs rospy roscpp
 It will create a beginner_tutorials folder which contains a package.xml and a CMakeLists.txt
 
@@ -165,5 +166,5 @@ Sample package.xml:
    <exec_depend>roscpp</exec_depend>
    <exec_depend>rospy</exec_depend>
    <exec_depend>std_msgs</exec_depend>
- 
 </package>
+
