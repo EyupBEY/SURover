@@ -32,6 +32,8 @@ You can change the name, but first close the previous terminal:
 To test that it's up:
 > rosnode ping my_turtle
 -------------------------------------------------------------------------------------------
+# https://wiki.ros.org/ROS/Tutorials/UnderstandingTopics
+
 ## Setup
 > roscore                                 (new terminal)
 > rosrun turtlesim turtlesim_node         (new terminal)
@@ -62,9 +64,27 @@ or press <tab> to see sub-commands.
 > rostopic list -v                                   (To see verbose option)
 publisher (turtle_teleop_key), subscriber (turtlesim_node)
 
-### rostopic type - Shows the type of the messege
+### rostopic type - ROS Messages - Shows the type of the message
 > rostopic type [topic]
     > rostopic type /turtle1/cmd_vel
         To see the details:
         > rosmsg show geometry_msgs/Twist
 
+### rostopic pub - Publishes data
+> rostopic pub [topic] [msg_type] [args]
+    > rostopic pub -1 /turtle1/cmd_vel geometry_msgs/Twist -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, 1.8]'
+        -1                       (means only publish one message and exit)
+        /turtle1/cmd_vel         (the name of the topic to publish)
+        geometry_msgs/Twist      (type of the message)
+        --                       (tells the option parser that none of the following arguments is an option. This is required in cases where your arguments have a leading dash -, like negative numbers.)
+        The arguments are in YAML syntax(https://wiki.ros.org/ROS/YAMLCommandLine)
+    Turtle has stopped moving why because we need 1 Hz to keep moving using -r:
+    > rostopic pub /turtle1/cmd_vel geometry_msgs/Twist -r 1 -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, -1.8]'
+    Press the refresh button in the upper-left in rqt_graph.
+    > rostopic echo /turtle1/pose        (U can see the data published by our turtlesim)
+
+### rostopic hz - Reports the average rate at which data is published
+> rostopic hz [topic]
+    > rostopic hz /turtle1/pose
+
+> rostopic type /turtle1/cmd_vel | rosmsg show
