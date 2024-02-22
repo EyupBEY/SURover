@@ -12,13 +12,11 @@ https://www.tjhsst.edu/~dhyatt/superap/unixcmd.html
 Click Source Control(CTRL+SHIFT+G)
 Enter a messege - Mandatory
 Click Commit
-
-
-
-
-
-
+-------------------------------------------------------------------------------------------
 # http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment
+
+## What is ROS
+Set of software libraries that run on a linux system. Not an OS.
 
 ## To check the environment variables & versions
 > printenv | grep R
@@ -41,13 +39,7 @@ it will create a CMakeLists.txt link in your 'src' folder.
 ## Check whether it is properly overlayed
 >source devel/setup.bash
 >echo $ROS_PACKAGE_PATH
-
-
-
-
-
-
-
+-------------------------------------------------------------------------------------------
 # https://wiki.ros.org/ROS/Tutorials/NavigatingTheFilesystem
 > sudo apt-get install ros-<distro>-ros-tutorials
 
@@ -73,8 +65,7 @@ it will create a CMakeLists.txt link in your 'src' folder.
 
 ## See ROS package path
 > echo $ROS_PACKAGE_PATH
-
-
+-------------------------------------------------------------------------------------------
 # https://wiki.ros.org/ROS/Tutorials/CreatingPackage
 
 ## Standalone
@@ -171,3 +162,6 @@ Sample package.xml:
    <exec_depend>std_msgs</exec_depend>
 </package>
 
+-------------------------------------------------------------------------------------------
+# https://wiki.ros.org/ROS/Tutorials/BuildingPackages
+-------------------------------------------------------------------------------------------
