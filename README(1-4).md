@@ -87,8 +87,8 @@ workspace_folder/        -- WORKSPACE
 
 ## Creating Catkin Package - A package named beginner_tutorials package which depends on std_msgs, rospy, and roscpp
 > cd src
-> catkin_create_pkg beginner_tutorials std_msgs rospy roscpp
-It will create a beginner_tutorials folder which contains a package.xml and a CMakeLists.txt
+> catkin_create_pkg myFirstPackage std_msgs rospy roscpp
+It will create a myFirstPackage folder which contains a package.xml and a CMakeLists.txt
 
 > cd ~/catkin_ws
 

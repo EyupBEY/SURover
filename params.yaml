@@ -1,0 +1,14 @@
+rosdistro: 'noetic
+
+  '
+roslaunch:
+  uris:
+    host_eyupbeyros__39339: http://EyupBEYros:39339/
+rosversion: '1.16.0
+
+  '
+run_id: 95ee395c-d23c-11ee-ab48-ade500190067
+turtlesim:
+  background_b: 255
+  background_g: 86
+  background_r: 69

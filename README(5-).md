@@ -146,3 +146,50 @@ rosparam uses the YAML markup language for syntax:
 
 To the changes affect:
 > rosservice call /clear
+--------------------------------------------------------------------------------------------
+# https://wiki.ros.org/ROS/Tutorials/UsingRqtconsoleRoslaunch
+
+## rqt_console and rqt_logger_level
+ROS's logging framework to display output from nodes. rqt_logger_level allows us to change the verbosity level (DEBUG, WARN, INFO, and ERROR) of nodes as they run.
+> rosrun rqt_console rqt_console
+> rosrun rqt_logger_level rqt_logger_level
+
+## roslaunch
+> cd ~/Desktop/SuRover
+> source devel/setup.bash
+> roscd myFirstPackage
+> roslaunch [package] [filename.launch]      Starts nodes as defined in a launch file.
+> roscd myFirstPackage
+> mkdir launch
+> cd launch
+Create a file named turtlemimic.launch
+
+<launch> <!-- To identify as a launch file -->
+
+    <group ns="turtlesim1">
+    <node pkg="turtlesim" name="sim" type="turtlesim_node"/>
+    </group>
+
+    <group ns="turtlesim2">
+    <node pkg="turtlesim" name="sim" type="turtlesim_node"/>
+    </group>
+
+    <!-- 2 groups with 2 turtlesim nodes with a name of sim. Abowed 6 lines allows us to start two simulators without having name conflicts. -->
+
+
+    <node pkg="turtlesim" name="mimic" type="mimic">
+    <remap from="input" to="turtlesim1/turtle1"/>
+    <remap from="output" to="turtlesim2/turtle1"/>
+    </node>
+
+    <!-- Here we start the mimic node with the topics input and output renamed to turtlesim1 and turtlesim2. This renaming will cause turtlesim2 to mimic turtlesim1. -->
+
+</launch>
+
+> roslaunch myFirstPackage turtlemimic.launch
+> rostopic pub /turtlesim1/turtle1/cmd_vel geometry_msgs/Twist -r 1 -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, -1.8]'
+
+Run belowed command and select Plugins > Introspection > Node Graph:
+> rqt
+or
+> rqt_graph
