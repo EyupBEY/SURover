@@ -88,3 +88,25 @@ publisher (turtle_teleop_key), subscriber (turtlesim_node)
     > rostopic hz /turtle1/pose
 
 > rostopic type /turtle1/cmd_vel | rosmsg show
+
+## rqt_plot
+It displays a scrolling time plot of the data published on topics.
+Note: If you're using electric or earlier, rqt is not available. Use rxplot instead.
+> rosrun rqt_plot rqt_plot
+Type to the Topic bar: /turtle1/pose/x  or  /turtle1/pose/y   or /turtle1/pose/theta
+-------------------------------------------------------------------------------------------
+# https://wiki.ros.org/ROS/Tutorials/UnderstandingServicesParams
+
+ROS Services are another way that nodes can communicate with each other. Services allow nodes to send a request and receive a response.
+
+> rosservice list                   print information about active services
+> rosservice type [service]         print service type
+    > rosservice type /clear
+        std_srvs/Empty : Means it is empty service. it takes no arguments (i.e. it sends no data when making a request and receives no data when receiving a response)
+> rosservice call [service] [args]  call the service with the provided args
+    > rosservice call /clear
+        It clears the turtlesim screen
+        It has no arguments because /clear is type of empty
+> rosservice find                   find services by service type
+> rosservice uri                    print service ROSRPC uri
+
