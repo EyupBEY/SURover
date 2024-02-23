@@ -97,12 +97,15 @@ Type to the Topic bar: /turtle1/pose/x  or  /turtle1/pose/y   or /turtle1/pose/t
 -------------------------------------------------------------------------------------------
 # https://wiki.ros.org/ROS/Tutorials/UnderstandingServicesParams
 
+## rosservice
 ROS Services are another way that nodes can communicate with each other. Services allow nodes to send a request and receive a response.
 
 > rosservice list                   print information about active services
 > rosservice type [service]         print service type
     > rosservice type /clear
         std_srvs/Empty : Means it is empty service. it takes no arguments (i.e. it sends no data when making a request and receives no data when receiving a response)
+    > rosservice type /spawn | rossrv show
+    > rosservice call /spawn 2 2 0.2 "optionalNameSection"    creates a new turtle at given location and orientation
 > rosservice call [service] [args]  call the service with the provided args
     > rosservice call /clear
         It clears the turtlesim screen
@@ -110,3 +113,36 @@ ROS Services are another way that nodes can communicate with each other. Service
 > rosservice find                   find services by service type
 > rosservice uri                    print service ROSRPC uri
 
+## rosparam
+The Parameter Server can store: integers, floats, boolean, dictionaries, and lists.
+rosparam uses the YAML markup language for syntax:
+1 is an integer, 1.0 is a float, one is a string, true is a boolean, [1, 2, 3] is a list of integers, and {a: b, c: d} is a dictionary.
+> rosparam list                        list parameter names
+> rosparam set [param_name]            set parameter
+    > rosparam set /turtlesim/background_r 150         sets red channel of the background color 150
+> rosparam get [param_name]            get parameter
+    > rosparam get /turtlesim/background_g
+        86
+    > rosparam get /                   Shows the contents of the entire Parameter Server
+        rosdistro: 'noetic
+
+        '
+        roslaunch:
+        uris:
+            host_nxt__43407: http://nxt:43407/
+        rosversion: '1.15.5
+
+        '
+        run_id: 7ef687d8-9ab7-11ea-b692-fcaa1494dbf9
+        turtlesim:
+        background_b: 255
+        background_g: 86
+        background_r: 69
+> rosparam dump [file_name] [namespace]                        dump parameters to file to use later
+    > rosparam dump params.yaml
+> rosparam load [file_name] [namespace]                        load parameters from file
+    > rosparam load params.yaml copy_turtle                    load the previous yaml file into copy_turtle which is a new workspace
+> rosparam delete                      delete parameter
+
+To the changes affect:
+> rosservice call /clear
