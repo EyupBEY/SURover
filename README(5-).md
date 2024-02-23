@@ -193,3 +193,20 @@ Run belowed command and select Plugins > Introspection > Node Graph:
 > rqt
 or
 > rqt_graph
+--------------------------------------------------------------------------------------------
+# https://wiki.ros.org/ROS/Tutorials/UsingRosEd
+
+## rosed - edit a file within a package by using the package name rather than having to type the entire path to the package.
+> rosed [package_name] [filename]
+    > rosed roscpp Logger.msg
+    > rosed myFirstPackage turtlemimic.launch
+Note: The default editor for rosed is vim. Thus, the abowed code probably won't work:
+Edit ~/.bashrc file to include:
+> export EDITOR='nano -w'
+or
+> export EDITOR='emacs -nw'
+if you prefer.
+To check:
+> echo $EDITOR
+--------------------------------------------------------------------------------------------
+# https://wiki.ros.org/ROS/Tutorials/CreatingMsgAndSrv
