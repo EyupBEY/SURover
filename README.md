@@ -18,7 +18,7 @@ source /opt/ros/<distro>/setup.bash
 ```
 > Run on every new shell you open or after you build sth in order to have access to the ROS commands, unless you add this line to your .bashrc.
 
-## Create ROS Workspace using Catkin
+## Catkin - Create Workspace
 > The new build system for ROS is "catkin", while "rosbuild" is the old
 ```
 mkdir -p ~/catkin_ws/src
@@ -29,9 +29,11 @@ catkin_make
 ```
 catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
 ```
-## Check whether it is properly overlayed
->source devel/setup.bash
->echo $ROS_PACKAGE_PATH
+### Check whether it is properly overlayed
+```
+source devel/setup.bash
+echo $ROS_PACKAGE_PATH
+```
 -------------------------------------------------------------------------------------------
 # https://wiki.ros.org/ROS/Tutorials/NavigatingTheFilesystem
 > sudo apt-get install ros-<distro>-ros-tutorials
