@@ -7,8 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/eyupbey/Desktop/SuRover/devel:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/home/eyupbey/Desktop/SuRover/devel/lib:$LD_LIBRARY_PATH"
 export PWD='/home/eyupbey/Desktop/SuRover/build'
-export ROSLISP_PACKAGE_DIRECTORIES='/home/eyupbey/Desktop/SuRover/devel/share/common-lisp'
-export ROS_PACKAGE_PATH="/home/eyupbey/Desktop/SuRover/src:$ROS_PACKAGE_PATH"

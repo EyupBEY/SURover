@@ -310,3 +310,56 @@ add_service_files(
 Check
 > rossrv show <service type>
     > rossrv show myFirstPackage/AddTwoInts
+
+## Common step for msg and srv
+Now that we have made some new messages we need to make our package again:
+
+In your catkin workspace
+> roscd myFirstPackage
+> cd ../..
+
+> catkin_make                (makes (compiles) a ROS package)
+or another alternative:
+> catkin build               (makes (compiles) a ROS package in an isolated manner while maintaining efficiency due to parallelisation)
+
+> cd -
+
+Any .msg file in the msg directory will generate code for use in all supported languages:
+    The C++ message header file will be generated in ~/catkin_ws/devel/include/beginner_tutorials/
+    The Python script will be created in ~/catkin_ws/devel/lib/python2.7/dist-packages/beginner_tutorials/msg
+    The lisp file appears in ~/catkin_ws/devel/share/common-lisp/ros/beginner_tutorials/msg/
+Similarly, any .srv files in the srv directory will have generated code in supported languages:
+    For C++, this will generate header files in the same directory as the message header files.
+    For Python and Lisp, there will be an 'srv' folder beside the 'msg' folders.
+--------------------------------------------------------------------------------------------
+
+# https://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28python%29
+"Node" is the ROS term for an executable that is connected to the ROS network.
+
+Here we'll create the publisher ("talker") node which will continually broadcast a message:
+
+Add the following to your CMakeLists.txt(This makes sure the python script gets installed properly, and uses the right python interpreter):
+catkin_install_python(PROGRAMS scripts/talker.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+> roscd myFirstPackage
+> mkdir scripts
+> cd scripts
+> wget https://raw.github.com/ros/ros_tutorials/kinetic-devel/rospy_tutorials/001_talker_listener/talker.py
+> chmod +x talker.py
+
+Code explained:
+1    #!/usr/bin/env python
+-->  Every Python ROS Node will have this declaration at the top. The first line makes sure your script is executed as a Python script.
+
+3    import rospy
+--> Requirement for creating a ROS node.
+4    from std_msgs.msg import String
+--> ?
+
+7    pub = rospy.Publisher('chatter', String, queue_size=10)
+--> ?
+8    rospy.init_node('talker', anonymous=True)
+--> NOTE: the name must be a base name (talker) , i.e. it cannot contain any slashes "/".
+--> anonymous = True ensures that your node has a unique name by adding random numbers to the end of NAME.

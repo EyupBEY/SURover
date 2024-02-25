@@ -1,0 +1,8 @@
+prefix=/home/eyupbey/Desktop/SuRover/devel
+
+Name: myFirstPackage
+Description: Description of myFirstPackage
+Version: 0.1.0
+Cflags: -I/home/eyupbey/Desktop/SuRover/devel/include
+Libs: -L${prefix}/lib 
+Requires: message_runtime roscpp rospy std_msgs
