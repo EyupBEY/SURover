@@ -678,7 +678,6 @@ catkin_install_python(PROGRAMS scripts/add_two_ints_client.py
 > roscd myFirstPackage
 > cd ../..
 > catkin_make
---------------------------------------------------------------------------------------------
 
 # [Examining the Simple Service and Client](https://wiki.ros.org/ROS/Tutorials/ExaminingServiceClient)
 ```
