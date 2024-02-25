@@ -122,27 +122,29 @@ cat package.xml
 rospack depends myfirstpackage
 ```
 
-## Customizing Package
-
-package.xml
+## Customizing Package - package.xml
 ```xml
 <description>The myfirstpackage package</description>
 ```
-Maintainer - Author(At least 1 required), email required
-> <maintainer email="user@todo.todo">user</maintainer>
-
-License Tags - BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3
+> Maintainer - Author(At least 1 required), email required
+```xml
+<maintainer email="user@todo.todo">user</maintainer>
+```
+> License Tags are: BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3
+```xml
 <license>BSD</license>
-
-Dependencies Tags: build_depend, buildtool_depend, exec_depend, test_depend.
+```
+> Dependencies Tags: build_depend, buildtool_depend, exec_depend, test_depend.
+```xml
 <!-- Use build_depend for packages you need at compile time: -->
-<!--   <build_depend>genmsg</build_depend> -->
+<build_depend>genmsg</build_depend>
 <!-- Use buildtool_depend for build tool packages: -->
-<!--   <buildtool_depend>catkin</buildtool_depend> -->
+<buildtool_depend>catkin</buildtool_depend>
 <!-- Use exec_depend for packages you need at runtime: -->
-<!--   <exec_depend>python-yaml</exec_depend> -->
+<exec_depend>python-yaml</exec_depend>
 <!-- Use test_depend for packages you need only for testing: -->
-<!--   <test_depend>gtest</test_depend> -->
+<test_depend>gtest</test_depend>
+```
 
 <buildtool_depend>catkin</buildtool_depend>
 
