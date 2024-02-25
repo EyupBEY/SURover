@@ -210,3 +210,40 @@ To check:
 > echo $EDITOR
 --------------------------------------------------------------------------------------------
 # https://wiki.ros.org/ROS/Tutorials/CreatingMsgAndSrv
+
+## msg (message) - A simpe text files that are used to generate source code for messages in different languages. They are stored in the msg directory of a package
+### Simple text files with a field type and field name per line.
+> roscd myFirstPackage
+> mkdir msg
+Here is an example of a msg that uses a Header, a string primitive, and two other msgs:
+    Header header
+    string child_frame_id
+    geometry_msgs/PoseWithCovariance pose
+    geometry_msgs/TwistWithCovariance twist
+    string first_name
+    string last_name
+    uint8 age
+    uint32 score
+
+Add this lines to package.xml because we need to make sure that the msg files are turned into source code for C++, Python, and other languages:
+    <build_depend>message_generation</build_depend>
+    <exec_depend>message_runtime</exec_depend>
+at build time, we need "message_generation",
+while at runtime, we only need "message_runtime"
+
+#### Field Types:
+    Header - contains a timestamp and coordinate frame information. You will frequently see the first line in a msg file have Header header.
+    int8, int16, int32, int64 (plus uint*)
+    float32, float64
+    string
+    time, duration
+    other msg files
+    variable-length array[] and fixed-length array[C]
+
+## srv (service) - A file that describes a service, it is composed of: request & response. They are stored in the srv directory.
+request and a response parts are separated by a '---' line. Here is an example of a srv file(A and B are request, Sum is response):
+    int64 A
+    int64 B
+    ---
+    int64 Sum
+
