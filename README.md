@@ -62,8 +62,10 @@ rosls <package-or-stack>[/subdir]
 ```
 > [!TIP]
 >You can use TAB key twice to see currently installed packages
-## See ROS package path
-> echo $ROS_PACKAGE_PATH
+### See ROS package path
+```
+echo $ROS_PACKAGE_PATH
+```
 
 ---
 
@@ -78,10 +80,6 @@ my_package/
 workspace_folder/        -- WORKSPACE
   src/                   -- SOURCE SPACE
     CMakeLists.txt       -- 'Toplevel' CMake file, provided by catkin
-    package_1/
-      CMakeLists.txt     -- CMakeLists.txt file for package_1
-      package.xml        -- Package manifest for package_1
-    ...
     package_n/
       CMakeLists.txt     -- CMakeLists.txt file for package_n
       package.xml        -- Package manifest for package_n
