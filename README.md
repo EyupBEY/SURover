@@ -57,7 +57,7 @@ rospack find [package_name]
 roscd <package-or-stack>[/subdir]
 ```
 ### Rosls
-> It ls's directly in a package by name rather than by absolute path. (i.e. my_first_package)
+> It ls's directly in a package by name rather than by absolute path. (i.e. myfirstpackage)
 ```
 rosls <package-or-stack>[/subdir]
 ```
