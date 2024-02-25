@@ -45,21 +45,23 @@ sudo apt-get install ros-<distro>-ros-tutorials
 * Manifests (package.xml): A manifest is a description of a package. It serves to define dependencies between packages and to capture meta information about the package like version, maintainer, license, etc...
 
 ## Filesystemtools
-### Rospack - Gives information about packages
-> rospack find [package_name]
-    > rospack roscpp
-### Roscd - Changes directory (cd) directly to a package or a stack.
-> roscd <package-or-stack>[/subdir]
-    > roscd roscpp
-    > roscd roscpp/cmake
-> pwd
-#### ROS programs log, history
-> roscd log
-### Rosls - It ls's directly in a package by name rather than by absolute path.
-> rosls <package-or-stack>[/subdir]
-    > rosls roscpp_tutorials
-    > rosls <<< now push the TAB key twice >>>    To see currently installed packages
-
+### Rospack
+> Gives information about packages (i.e. roscpp)
+```
+rospack find [package_name]
+```
+### Roscd
+> Changes directory (cd) directly to a package or a stack. (i.e. roscpp/cmake, roscpp, or log)
+```
+roscd <package-or-stack>[/subdir]
+```
+### Rosls
+> It ls's directly in a package by name rather than by absolute path. (i.e. my_first_package)
+```
+rosls <package-or-stack>[/subdir]
+```
+> [!TIP]
+>You can use TAB key twice to see currently installed packages
 ## See ROS package path
 > echo $ROS_PACKAGE_PATH
 
