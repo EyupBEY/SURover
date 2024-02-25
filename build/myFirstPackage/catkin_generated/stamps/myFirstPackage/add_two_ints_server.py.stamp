@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from __future__ import print_function
-from beginner_tutorials.srv import AddTwoInts,AddTwoIntsResponse
+from myFirstPackage.srv import AddTwoInts,AddTwoIntsResponse
 import rospy
 def handle_add_two_ints(req):
     print("Returning [%s + %s = %s]"%(req.a, req.b, (req.a + req.b)))
