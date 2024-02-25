@@ -408,3 +408,11 @@ Edit the catkin_install_python() call in your CMakeLists.txt:
 19     # spin() simply keeps python from exiting until this node is stopped
 20     rospy.spin()
 --> This declares that your node subscribes to the chatter topic which is of type std_msgs.msgs.String. When new messages are received, callback is invoked(called) with the message as the first argument.
+--> We also changed up the call to rospy.init_node() somewhat.
+--> We've added the anonymous=True keyword argument. ROS requires that each node have a unique name. If a node with the same name comes up, it bumps the previous one. This is so that malfunctioning nodes can easily be kicked off the network. The anonymous=True flag tells rospy to generate a unique name for the node so that you can have multiple listener.py nodes run easily.
+--> Finally, rospy.spin() simply keeps your node from exiting until the node has been shutdown. Unlike roscpp, rospy.spin() does not affect the subscriber callback functions, as those have their own threads.
+
+Build the node, yes, even for python.
+> roscd myFirstPackage
+> cd ../..
+> catkin_make

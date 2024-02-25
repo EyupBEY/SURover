@@ -92,3 +92,11 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/myFirstPackage" TYPE FILE FILES "/home/eyupbey/Desktop/SuRover/src/myFirstPackage/package.xml")
 endif()
 
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/myFirstPackage" TYPE PROGRAM FILES "/home/eyupbey/Desktop/SuRover/build/myFirstPackage/catkin_generated/installspace/talker.py")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/myFirstPackage" TYPE PROGRAM FILES "/home/eyupbey/Desktop/SuRover/build/myFirstPackage/catkin_generated/installspace/listener.py")
+endif()
+
