@@ -33,7 +33,9 @@ catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
 source devel/setup.bash
 echo $ROS_PACKAGE_PATH
 ```
--------------------------------------------------------------------------------------------
+
+---
+
 # [Navigating the ROS Filesystem](https://wiki.ros.org/ROS/Tutorials/NavigatingTheFilesystem)
 ```
 sudo apt-get install ros-<distro>-ros-tutorials
@@ -60,7 +62,9 @@ sudo apt-get install ros-<distro>-ros-tutorials
 
 ## See ROS package path
 > echo $ROS_PACKAGE_PATH
--------------------------------------------------------------------------------------------
+
+---
+
 # [Creating a ROS Package](https://wiki.ros.org/ROS/Tutorials/CreatingPackage)
 
 ## Standalone
@@ -158,9 +162,12 @@ Sample package.xml:
    <exec_depend>std_msgs</exec_depend>
 </package>
 
--------------------------------------------------------------------------------------------
+---
+
 # [Building a ROS Package](https://wiki.ros.org/ROS/Tutorials/BuildingPackages)
--------------------------------------------------------------------------------------------
+
+---
+
 # [Understanding ROS Nodes](https://wiki.ros.org/ROS/Tutorials/UnderstandingNodes)
 
 ## Graph Concepts
@@ -194,7 +201,9 @@ You can change the name, but first close the previous terminal:
 
 To test that it's up:
 > rosnode ping my_turtle
--------------------------------------------------------------------------------------------
+
+---
+
 # [Understanding ROS Topics](https://wiki.ros.org/ROS/Tutorials/UnderstandingTopics)
 
 ## Setup
@@ -257,7 +266,9 @@ It displays a scrolling time plot of the data published on topics.
 Note: If you're using electric or earlier, rqt is not available. Use rxplot instead.
 > rosrun rqt_plot rqt_plot
 Type to the Topic bar: /turtle1/pose/x  or  /turtle1/pose/y   or /turtle1/pose/theta
--------------------------------------------------------------------------------------------
+
+---
+
 # [Understanding ROS Services and Parameters](https://wiki.ros.org/ROS/Tutorials/UnderstandingServicesParams)
 
 ## rosservice
@@ -309,7 +320,9 @@ rosparam uses the YAML markup language for syntax:
 
 To the changes affect:
 > rosservice call /clear
---------------------------------------------------------------------------------------------
+
+---
+
 # [Using rqt_console and roslaunch](https://wiki.ros.org/ROS/Tutorials/UsingRqtconsoleRoslaunch)
 
 ## rqt_console and rqt_logger_level
@@ -356,7 +369,9 @@ Run belowed command and select Plugins > Introspection > Node Graph:
 > rqt
 or
 > rqt_graph
---------------------------------------------------------------------------------------------
+
+---
+
 # [Using rosed to edit files in ROS](https://wiki.ros.org/ROS/Tutorials/UsingRosEd)
 
 ## rosed - edit a file within a package by using the package name rather than having to type the entire path to the package.
@@ -371,7 +386,9 @@ or
 if you prefer.
 To check:
 > echo $EDITOR
---------------------------------------------------------------------------------------------
+
+---
+
 # [Creating a ROS msg and srv](https://wiki.ros.org/ROS/Tutorials/CreatingMsgAndSrv)
 
 ## msg (message) - A simpe text files that are used to generate source code for messages in different languages. They are stored in the msg directory of a package
@@ -494,7 +511,8 @@ Any .msg file in the msg directory will generate code for use in all supported l
 Similarly, any .srv files in the srv directory will have generated code in supported languages:
     For C++, this will generate header files in the same directory as the message header files.
     For Python and Lisp, there will be an 'srv' folder beside the 'msg' folders.
---------------------------------------------------------------------------------------------
+
+---
 
 # [Writing a Simple Publisher and Subscriber (Python)](https://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28python%29)
 "Node" is the ROS term for an executable that is connected to the ROS network.
@@ -579,7 +597,8 @@ Build the node, yes, even for python.
 > roscd myFirstPackage
 > cd ../..
 > catkin_make
---------------------------------------------------------------------------------------------
+
+---
 
 # [Examining the Simple Publisher and Subscriber](https://wiki.ros.org/ROS/Tutorials/ExaminingPublisherSubscriber)
 
@@ -596,7 +615,8 @@ Source the setup after calling catkin_make or creating a new terminal.
 ## Running Subscriber
 > rosrun beginner_tutorials listener     (C++)
 > rosrun beginner_tutorials listener.py  (Python)
---------------------------------------------------------------------------------------------
+
+---
 
 # [Writing a Simple Service and Client (Python)](https://wiki.ros.org/ROS/Tutorials/WritingServiceClient%28python%29)
 
@@ -678,6 +698,8 @@ catkin_install_python(PROGRAMS scripts/add_two_ints_client.py
 > roscd myFirstPackage
 > cd ../..
 > catkin_make
+
+---
 
 # [Examining the Simple Service and Client](https://wiki.ros.org/ROS/Tutorials/ExaminingServiceClient)
 ```
