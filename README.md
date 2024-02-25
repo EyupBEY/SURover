@@ -136,6 +136,8 @@ rospack depends myfirstpackage
 ```
 > Dependencies Tags: build_depend, buildtool_depend, exec_depend, test_depend.
 ```xml
+<!-- We need dependencies to be available at both build and run time. -->
+
 <!-- Use build_depend for packages you need at compile time: -->
 <build_depend>genmsg</build_depend>
 <!-- Use buildtool_depend for build tool packages: -->
@@ -146,27 +148,18 @@ rospack depends myfirstpackage
 <test_depend>gtest</test_depend>
 ```
 
-<buildtool_depend>catkin</buildtool_depend>
-
-<!-- We need dependencies to be available at both build and run time. -->
-<build_depend>roscpp</build_depend>
-<build_depend>rospy</build_depend>
-<build_depend>std_msgs</build_depend>
-<exec_depend>roscpp</exec_depend>
-<exec_depend>rospy</exec_depend>
-<exec_depend>std_msgs</exec_depend>
-
-Sample package.xml:
+> Sample package.xml:
+```xml
 <?xml version="1.0"?>
 <package format="2">
    <name>myfirstpackage</name>
    <version>0.1.0</version>
    <description>The myfirstpackage package</description>
  
-   <maintainer email="you@yourdomain.tld">Your Name</maintainer>
+   <maintainer email="emin.ozkanli@sabanciuniv.edu">Hamid Emin Ozkanli</maintainer>
    <license>BSD</license>
-   <url type="website">http://wiki.ros.org/myfirstpackage</url>
-   <author email="you@yourdomain.tld">Jane Doe</author>
+   <url type="website">https://github.com/EyupBEY/SuRover</url>
+   <author email="hamideminozkanli@gmail.com">Hamid Emin Ozkanli</author>
  
    <buildtool_depend>catkin</buildtool_depend>
  
@@ -178,6 +171,7 @@ Sample package.xml:
    <exec_depend>rospy</exec_depend>
    <exec_depend>std_msgs</exec_depend>
 </package>
+```
 
 ---
 
