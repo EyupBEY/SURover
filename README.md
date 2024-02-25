@@ -29,7 +29,7 @@ catkin_make
 ```
 catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
 ```
-### Check whether it is properly overlayed
+> Check whether it is properly overlayed
 ```
 source devel/setup.bash
 echo $ROS_PACKAGE_PATH
