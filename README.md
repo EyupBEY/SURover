@@ -119,17 +119,15 @@ cat package.xml
 
 > To show Independent Dependencies, in other words Dependencies's Dependencies
 ```
-rospack depends1 rospy
-```
-or
-```
 rospack depends myfirstpackage
 ```
+
 ## Customizing Package
 
-You can change the line inside of the file named package.xml
+package.xml
+```xml
 <description>The myfirstpackage package</description>
-
+```
 Maintainer - Author(At least 1 required), email required
 > <maintainer email="user@todo.todo">user</maintainer>
 
