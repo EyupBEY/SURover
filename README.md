@@ -1,19 +1,5 @@
-# Git Ignore
-/folder/ignoredfile.txt --> Ignores specified file in the root directory
-ignoresAllFilesOrFoldersStartingWithThisText*
-*.md --> Ignores all the files ends with .md
-!README.md --> Doesn't let the abowed code ignores README.md
-
-# Temel Linux Komutları
-https://www.tjhsst.edu/~dhyatt/superap/unixcmd.html
-
-
-# Update/Upload code to Github
-Click Source Control(CTRL+SHIFT+G)
-Enter a messege - Mandatory
-Click Commit
--------------------------------------------------------------------------------------------
-# http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment
+# Installing and Configuring Your ROS Environment
+http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment
 
 ## What is ROS
 Set of software libraries that run on a linux system. Not an OS.
