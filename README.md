@@ -81,17 +81,16 @@ echo $ROS_PACKAGE_PATH
             * package.xml        -- Package manifest for package_n
 
 ## Creating Catkin Package
-> We are now creating a package named beginner_tutorials package which depends on std_msgs, rospy, and roscpp
+> We are now creating a package named myfirstpackage package which depends on std_msgs, rospy, and roscpp
+
+> This will create a myfirstpackage folder which contains a package.xml and a CMakeLists.txt
 ```
 cd src
+catkin_create_pkg myfirstpackage std_msgs rospy roscpp
 ```
 > [!WARNING]
 > Package name should only contain lower case letters, digits, underscores, and dashes.
 
-> This will create a myfirstpackage folder which contains a package.xml and a CMakeLists.txt
-```
-catkin_create_pkg myfirstpackage std_msgs rospy roscpp
-```
 
 > Builds any catkin projects found in the src folder(by default) in the workspace
 ```
@@ -104,19 +103,19 @@ catkin_make
 
 
 ## Dependencies
-> rospack depends1 beginner_tutorials        Shows the dependencies
+> rospack depends1 myfirstpackage        Shows the dependencies
 
-> roscd beginner_tutorials
+> roscd myfirstpackage
 > cat package.xml                            This shows as well
 
 > rospack depends1 rospy                     Independent Dependencies - Dpendencies' Dependency
 
-> rospack depends beginner_tutorials         Shows literally all dependencies
+> rospack depends myfirstpackage         Shows literally all dependencies
 
 ## Customizing Package
 
 You can change the line inside of the file named package.xml
-<description>The beginner_tutorials package</description>
+<description>The myfirstpackage package</description>
 
 Maintainer - Author(At least 1 required), email required
 > <maintainer email="user@todo.todo">user</maintainer>
@@ -147,13 +146,13 @@ Dependencies Tags: build_depend, buildtool_depend, exec_depend, test_depend.
 Sample package.xml:
 <?xml version="1.0"?>
 <package format="2">
-   <name>beginner_tutorials</name>
+   <name>myfirstpackage</name>
    <version>0.1.0</version>
-   <description>The beginner_tutorials package</description>
+   <description>The myfirstpackage package</description>
  
    <maintainer email="you@yourdomain.tld">Your Name</maintainer>
    <license>BSD</license>
-   <url type="website">http://wiki.ros.org/beginner_tutorials</url>
+   <url type="website">http://wiki.ros.org/myfirstpackage</url>
    <author email="you@yourdomain.tld">Jane Doe</author>
  
    <buildtool_depend>catkin</buildtool_depend>
@@ -510,9 +509,9 @@ or another alternative:
 > cd -
 
 Any .msg file in the msg directory will generate code for use in all supported languages:
-    The C++ message header file will be generated in ~/catkin_ws/devel/include/beginner_tutorials/
-    The Python script will be created in ~/catkin_ws/devel/lib/python2.7/dist-packages/beginner_tutorials/msg
-    The lisp file appears in ~/catkin_ws/devel/share/common-lisp/ros/beginner_tutorials/msg/
+    The C++ message header file will be generated in ~/catkin_ws/devel/include/myfirstpackage/
+    The Python script will be created in ~/catkin_ws/devel/lib/python2.7/dist-packages/myfirstpackage/msg
+    The lisp file appears in ~/catkin_ws/devel/share/common-lisp/ros/myfirstpackage/msg/
 Similarly, any .srv files in the srv directory will have generated code in supported languages:
     For C++, this will generate header files in the same directory as the message header files.
     For Python and Lisp, there will be an 'srv' folder beside the 'msg' folders.
@@ -614,12 +613,12 @@ Source the setup after calling catkin_make or creating a new terminal.
 > cd ../..
 > source ./devel/setup.bash
 
-> rosrun beginner_tutorials talker      (C++)
-> rosrun beginner_tutorials talker.py   (Python) 
+> rosrun myfirstpackage talker      (C++)
+> rosrun myfirstpackage talker.py   (Python) 
 
 ## Running Subscriber
-> rosrun beginner_tutorials listener     (C++)
-> rosrun beginner_tutorials listener.py  (Python)
+> rosrun myfirstpackage listener     (C++)
+> rosrun myfirstpackage listener.py  (Python)
 
 ---
 
@@ -634,7 +633,7 @@ Do the things mentioned in one of the previous sections (srv (service) - A file 
 
 #!/usr/bin/env python
 from __future__ import print_function
-from beginner_tutorials.srv import AddTwoInts,AddTwoIntsResponse
+from myfirstpackage.srv import AddTwoInts,AddTwoIntsResponse
 import rospy
 def handle_add_two_ints(req):
     print("Returning [%s + %s = %s]"%(req.a, req.b, (req.a + req.b)))
@@ -667,7 +666,7 @@ Add/Manipulate the following to CMAkeLists.txt in order to ensure the python scr
 from __future__ import print_function
 import sys
 import rospy
-from beginner_tutorials.srv import *
+from myfirstpackage.srv import *
 def add_two_ints_client(x, y):
     rospy.wait_for_service('add_two_ints')
     try:
