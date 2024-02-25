@@ -107,15 +107,24 @@ catkin_make --source my_src
 ```
 
 ## Dependencies
-> rospack depends1 myfirstpackage        Shows the dependencies
+> To show the dependencies:
+```
+rospack depends1 myfirstpackage
+```
+or
+```
+roscd myfirstpackage
+cat package.xml
+```
 
-> roscd myfirstpackage
-> cat package.xml                            This shows as well
-
-> rospack depends1 rospy                     Independent Dependencies - Dpendencies' Dependency
-
-> rospack depends myfirstpackage         Shows literally all dependencies
-
+> To show Independent Dependencies, in other words Dependencies's Dependencies
+```
+rospack depends1 rospy
+```
+or
+```
+rospack depends myfirstpackage
+```
 ## Customizing Package
 
 You can change the line inside of the file named package.xml
