@@ -15,6 +15,7 @@ roscore
 ```
 source /opt/ros/<distro>/setup.bash
 ```
+> [!IMPORTANT]
 > Run on every new shell you open or after you build sth in order to have access to the ROS commands, unless you add this line to your .bashrc.
 
 ## Catkin - Create Workspace
