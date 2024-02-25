@@ -90,17 +90,21 @@ catkin_create_pkg myfirstpackage std_msgs rospy roscpp
 ```
 > [!WARNING]
 > Package name should only contain lower case letters, digits, underscores, and dashes.
-
-
+rev 1
 > Builds any catkin projects found in the src folder(by default) in the workspace
 ```
 cd ~/catkin_ws
 catkin_make
 ```
-> catkin_make --source my_src
+or
+```
+catkin_make --source my_src
+```
 
-> . ~/catkin_ws/devel/setup.bash                To add the workspace to your ROS environment you need to source the generated setup file
-
+> To add the workspace to your ROS environment you need to source the generated setup file
+```
+. ~/catkin_ws/devel/setup.bash
+```
 
 ## Dependencies
 > rospack depends1 myfirstpackage        Shows the dependencies
