@@ -72,28 +72,32 @@ echo $ROS_PACKAGE_PATH
 
 # [Creating a ROS Package](https://wiki.ros.org/ROS/Tutorials/CreatingPackage)
 
-## Standalone
-my_package/
-  CMakeLists.txt
-  package.xml
+## Trivial Workspace
+* workspace_folder/        -- WORKSPACE
+    * src/                   -- SOURCE SPACE
+        * CMakeLists.txt       -- 'Toplevel' CMake file, provided by catkin
+        * package_n/
+            * CMakeLists.txt     -- CMakeLists.txt file for package_n
+            * package.xml        -- Package manifest for package_n
 
-## Trivial Workspace(recommended)
-workspace_folder/        -- WORKSPACE
-  src/                   -- SOURCE SPACE
-    CMakeLists.txt       -- 'Toplevel' CMake file, provided by catkin
-    package_n/
-      CMakeLists.txt     -- CMakeLists.txt file for package_n
-      package.xml        -- Package manifest for package_n
+## Creating Catkin Package
+> We are now creating a package named beginner_tutorials package which depends on std_msgs, rospy, and roscpp
+```
+cd src
+```
+> [!WARNING]
+> Package name should only contain lower case letters, digits, underscores, and dashes.
 
-## Creating Catkin Package - A package named beginner_tutorials package which depends on std_msgs, rospy, and roscpp
-> cd src
-WARNING: Package name "myFirstPackage" does not follow the naming conventions. It should start with a lower case letter and only contain lower case letters, digits, underscores, and dashes.
-> catkin_create_pkg myFirstPackage std_msgs rospy roscpp
-It will create a myFirstPackage folder which contains a package.xml and a CMakeLists.txt
+> This will create a myfirstpackage folder which contains a package.xml and a CMakeLists.txt
+```
+catkin_create_pkg myfirstpackage std_msgs rospy roscpp
+```
 
-> cd ~/catkin_ws
-
-> catkin_make           build any catkin projects found in the src folder(by default) in the workspace
+> Builds any catkin projects found in the src folder(by default) in the workspace
+```
+cd ~/catkin_ws
+catkin_make
+```
 > catkin_make --source my_src
 
 > . ~/catkin_ws/devel/setup.bash                To add the workspace to your ROS environment you need to source the generated setup file
@@ -334,9 +338,9 @@ ROS's logging framework to display output from nodes. rqt_logger_level allows us
 ## roslaunch
 > cd ~/Desktop/SuRover
 > source devel/setup.bash
-> roscd myFirstPackage
+> roscd myfirstpackage
 > roslaunch [package] [filename.launch]      Starts nodes as defined in a launch file.
-> roscd myFirstPackage
+> roscd myfirstpackage
 > mkdir launch
 > cd launch
 Create a file named turtlemimic.launch
@@ -363,7 +367,7 @@ Create a file named turtlemimic.launch
 
 </launch>
 
-> roslaunch myFirstPackage turtlemimic.launch
+> roslaunch myfirstpackage turtlemimic.launch
 > rostopic pub /turtlesim1/turtle1/cmd_vel geometry_msgs/Twist -r 1 -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, -1.8]'
 
 Run belowed command and select Plugins > Introspection > Node Graph:
@@ -378,7 +382,7 @@ or
 ## rosed - edit a file within a package by using the package name rather than having to type the entire path to the package.
 > rosed [package_name] [filename]
     > rosed roscpp Logger.msg
-    > rosed myFirstPackage turtlemimic.launch
+    > rosed myfirstpackage turtlemimic.launch
 Note: The default editor for rosed is vim. Thus, the abowed code probably won't work:
 Edit ~/.bashrc file to include:
 > export EDITOR='nano -w'
@@ -405,7 +409,7 @@ To check:
     other msg files
     variable-length array[] and fixed-length array[C]
 
-> roscd myFirstPackage
+> roscd myfirstpackage
 > mkdir msg
 Here is an example of a msg that uses a Header, a string primitive, and two other msgs:
     Header header
@@ -423,7 +427,7 @@ Add this lines to package.xml because we need to make sure that the msg files ar
 at build time, we need "message_generation",
 while at runtime, we only need "message_runtime"
 
-Add the "message_generation" dependency to the "find_package" call which already exists in your myFirstPackage/CMakeLists.txt so that you can generate messages.
+Add the "message_generation" dependency to the "find_package" call which already exists in your myfirstpackage/CMakeLists.txt so that you can generate messages.
 
 Modify the existing text to add message_generation before the closing parenthesis
 find_package(catkin REQUIRED COMPONENTS
@@ -452,7 +456,7 @@ Now we are ready to generate source files from your msg definition.
 
 Check 
 > rosmsg show [message type]
-    > rosmsg show myFirstPackage/Num
+    > rosmsg show myfirstpackage/Num
     or
     > rosmsg show Num
 
@@ -463,7 +467,7 @@ request and a response parts are separated by a '---' line. Here is an example o
     ---
     int64 Sum
 
-> roscd myFirstPackage
+> roscd myfirstpackage
 > mkdir srv
 Instead of creating a srv definition by hand we copy an existing from another package by using roscp.
 > roscp [package_name] [file_to_copy_path] [copy_path]
@@ -490,13 +494,13 @@ add_service_files(
 
 Check
 > rossrv show <service type>
-    > rossrv show myFirstPackage/AddTwoInts
+    > rossrv show myfirstpackage/AddTwoInts
 
 ## Common step for msg and srv
 Now that we have made some new messages we need to make our package again:
 
 In your catkin workspace
-> roscd myFirstPackage
+> roscd myfirstpackage
 > cd ../..
 
 > catkin_make                (makes (compiles) a ROS package)
@@ -525,7 +529,7 @@ catkin_install_python(PROGRAMS scripts/talker.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
-> roscd myFirstPackage
+> roscd myfirstpackage
 > mkdir scripts
 > cd scripts
 > wget https://raw.github.com/ros/ros_tutorials/kinetic-devel/rospy_tutorials/001_talker_listener/talker.py
@@ -576,7 +580,7 @@ std_msgs.msg.String is a very simple message type. Same as:
 --> In addition to the standard Python __main__ check, this catches a rospy.ROSInterruptException exception, which can be thrown by rospy.sleep() and rospy.Rate.sleep() methods when Ctrl-C is pressed or your Node is otherwise shutdown. The reason this exception is raised is so that you don't accidentally continue executing code after the sleep().
 
 ## Create Subscriber Node - A node to receive messages
-> roscd myFirstPackage/scripts/
+> roscd myfirstpackage/scripts/
 > wget https://raw.github.com/ros/ros_tutorials/kinetic-devel/rospy_tutorials/001_talker_listener/listener.py
 > chmod +x listener.py
 
@@ -595,7 +599,7 @@ Edit the catkin_install_python() call in your CMakeLists.txt:
 --> Finally, rospy.spin() simply keeps your node from exiting until the node has been shutdown. Unlike roscpp, rospy.spin() does not affect the subscriber callback functions, as those have their own threads.
 
 Build the node, yes, even for python.
-> roscd myFirstPackage
+> roscd myfirstpackage
 > cd ../..
 > catkin_make
 
@@ -606,7 +610,7 @@ Build the node, yes, even for python.
 ## Running Publisher
 > roscore
 Source the setup after calling catkin_make or creating a new terminal.
-> roscd myFirstPackage
+> roscd myfirstpackage
 > cd ../..
 > source ./devel/setup.bash
 
@@ -625,7 +629,7 @@ Source the setup after calling catkin_make or creating a new terminal.
 Here we'll create the service ("add_two_ints_server") node which will receive two ints and return the sum.
 Do the things mentioned in one of the previous sections (srv (service) - A file that describes a service, it is composed of: request & response. They are stored in the srv directory.)
 
-> roscd myFirstPackage
+> roscd myfirstpackage
 > touch scripts/add_two_ints_server.py
 
 #!/usr/bin/env python
@@ -654,7 +658,7 @@ Add/Manipulate the following to CMAkeLists.txt in order to ensure the python scr
     )
 
 ## Writing a Client Node
-> roscd myFirstPackage
+> roscd myfirstpackage
 > touch scripts/add_two_ints_client.py
 
 --> For clients you don't have to call init_node(). Wait_for_service must be called. This is a convenience method that blocks until the service named add_two_ints is available.
@@ -696,7 +700,7 @@ catkin_install_python(PROGRAMS scripts/add_two_ints_client.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
-> roscd myFirstPackage
+> roscd myfirstpackage
 > cd ../..
 > catkin_make
 
@@ -709,20 +713,20 @@ roscore
 ## Running the service
 > For C++
 ```
-rosrun myFirstPackage add_two_ints_server
+rosrun myfirstpackage add_two_ints_server
 ```
 
 > For Python
 ```
-rosrun myFirstPackage add_two_ints_server.py
+rosrun myfirstpackage add_two_ints_server.py
 ```
 ## Running the Client
 > For C++
 ```
-rosrun myFirstPackage add_two_ints_client 1 3
+rosrun myfirstpackage add_two_ints_client 1 3
 ```
 
 > For Python
 ```
-rosrun myFirstPackage add_two_ints_client.py 1 3
+rosrun myfirstpackage add_two_ints_client.py 1 3
 ```
