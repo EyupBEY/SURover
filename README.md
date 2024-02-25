@@ -5,8 +5,9 @@ http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment
 Set of software libraries that run on a linux system. Not an OS.
 
 ## To check the environment variables & versions
-> printenv | grep R
-
+```
+printenv | grep R
+```
 ## To check whether or not we installed ros
 > roscore
 
