@@ -7,6 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export PKG_CONFIG_PATH="/home/eyupbey/Desktop/SuRover/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/eyupbey/Desktop/SuRover/build'
-export PYTHONPATH="/home/eyupbey/Desktop/SuRover/devel/lib/python3/dist-packages:$PYTHONPATH"

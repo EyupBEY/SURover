@@ -22,6 +22,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/eyupbey/Desktop/SuRover/src/CMakeLists.txt"
   "/home/eyupbey/Desktop/SuRover/src/myFirstPackage/CMakeLists.txt"
   "/home/eyupbey/Desktop/SuRover/src/myFirstPackage/package.xml"
+  "/home/eyupbey/Desktop/SuRover/src/myFirstPackage/scripts/add_two_ints_client.py"
+  "/home/eyupbey/Desktop/SuRover/src/myFirstPackage/scripts/add_two_ints_server.py"
   "/home/eyupbey/Desktop/SuRover/src/myFirstPackage/scripts/listener.py"
   "/home/eyupbey/Desktop/SuRover/src/myFirstPackage/scripts/talker.py"
   "/opt/ros/noetic/share/catkin/cmake/all.cmake"
