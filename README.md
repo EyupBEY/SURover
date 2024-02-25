@@ -3,15 +3,15 @@
 ## What is ROS
 Set of software libraries that run on a linux system. Not an OS.
 
-### Check the environment variables & versions
+> Check the environment variables & versions
 ```
 printenv | grep R
 ```
-### Check whether or not we installed ros
+> Check whether or not we installed ros
 ```
 roscore
 ```
-### Sourcing Packages
+> Sourcing Packages
 ```
 source /opt/ros/<distro>/setup.bash
 ```
