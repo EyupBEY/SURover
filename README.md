@@ -40,9 +40,9 @@ echo $ROS_PACKAGE_PATH
 ```
 sudo apt-get install ros-<distro>-ros-tutorials
 ```
-## Packages: Packages are the software organization unit of ROS code. Each package can contain libraries, executables, scripts, or other artifacts.
+* Packages: Packages are the software organization unit of ROS code. Each package can contain libraries, executables, scripts, or other artifacts.
 
-## Manifests (package.xml): A manifest is a description of a package. It serves to define dependencies between packages and to capture meta information about the package like version, maintainer, license, etc...
+* Manifests (package.xml): A manifest is a description of a package. It serves to define dependencies between packages and to capture meta information about the package like version, maintainer, license, etc...
 
 ## Filesystemtools
 ### Rospack - Gives information about packages
