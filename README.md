@@ -34,9 +34,10 @@ source devel/setup.bash
 echo $ROS_PACKAGE_PATH
 ```
 -------------------------------------------------------------------------------------------
-# https://wiki.ros.org/ROS/Tutorials/NavigatingTheFilesystem
-> sudo apt-get install ros-<distro>-ros-tutorials
-
+# [Navigating the ROS Filesystem](https://wiki.ros.org/ROS/Tutorials/NavigatingTheFilesystem)
+```
+sudo apt-get install ros-<distro>-ros-tutorials
+```
 ## Packages: Packages are the software organization unit of ROS code. Each package can contain libraries, executables, scripts, or other artifacts.
 
 ## Manifests (package.xml): A manifest is a description of a package. It serves to define dependencies between packages and to capture meta information about the package like version, maintainer, license, etc...
@@ -60,7 +61,7 @@ echo $ROS_PACKAGE_PATH
 ## See ROS package path
 > echo $ROS_PACKAGE_PATH
 -------------------------------------------------------------------------------------------
-# https://wiki.ros.org/ROS/Tutorials/CreatingPackage
+# [Creating a ROS Package](https://wiki.ros.org/ROS/Tutorials/CreatingPackage)
 
 ## Standalone
 my_package/
@@ -158,10 +159,9 @@ Sample package.xml:
 </package>
 
 -------------------------------------------------------------------------------------------
-# https://wiki.ros.org/ROS/Tutorials/BuildingPackages
+# [Building a ROS Package](https://wiki.ros.org/ROS/Tutorials/BuildingPackages)
 -------------------------------------------------------------------------------------------
-
-# https://wiki.ros.org/ROS/Tutorials/UnderstandingNodes
+# [Understanding ROS Nodes](https://wiki.ros.org/ROS/Tutorials/UnderstandingNodes)
 
 ## Graph Concepts
 Nodes: A node is an executable that uses ROS to communicate with other nodes by ROS client library.
@@ -195,7 +195,7 @@ You can change the name, but first close the previous terminal:
 To test that it's up:
 > rosnode ping my_turtle
 -------------------------------------------------------------------------------------------
-# https://wiki.ros.org/ROS/Tutorials/UnderstandingTopics
+# [Understanding ROS Topics](https://wiki.ros.org/ROS/Tutorials/UnderstandingTopics)
 
 ## Setup
 > roscore                                 (new terminal)
@@ -258,7 +258,7 @@ Note: If you're using electric or earlier, rqt is not available. Use rxplot inst
 > rosrun rqt_plot rqt_plot
 Type to the Topic bar: /turtle1/pose/x  or  /turtle1/pose/y   or /turtle1/pose/theta
 -------------------------------------------------------------------------------------------
-# https://wiki.ros.org/ROS/Tutorials/UnderstandingServicesParams
+# [Understanding ROS Services and Parameters](https://wiki.ros.org/ROS/Tutorials/UnderstandingServicesParams)
 
 ## rosservice
 ROS Services are another way that nodes can communicate with each other. Services allow nodes to send a request and receive a response.
@@ -310,7 +310,7 @@ rosparam uses the YAML markup language for syntax:
 To the changes affect:
 > rosservice call /clear
 --------------------------------------------------------------------------------------------
-# https://wiki.ros.org/ROS/Tutorials/UsingRqtconsoleRoslaunch
+# [Using rqt_console and roslaunch](https://wiki.ros.org/ROS/Tutorials/UsingRqtconsoleRoslaunch)
 
 ## rqt_console and rqt_logger_level
 ROS's logging framework to display output from nodes. rqt_logger_level allows us to change the verbosity level (DEBUG, WARN, INFO, and ERROR) of nodes as they run.
@@ -357,7 +357,7 @@ Run belowed command and select Plugins > Introspection > Node Graph:
 or
 > rqt_graph
 --------------------------------------------------------------------------------------------
-# https://wiki.ros.org/ROS/Tutorials/UsingRosEd
+# [Using rosed to edit files in ROS](https://wiki.ros.org/ROS/Tutorials/UsingRosEd)
 
 ## rosed - edit a file within a package by using the package name rather than having to type the entire path to the package.
 > rosed [package_name] [filename]
@@ -372,7 +372,7 @@ if you prefer.
 To check:
 > echo $EDITOR
 --------------------------------------------------------------------------------------------
-# https://wiki.ros.org/ROS/Tutorials/CreatingMsgAndSrv
+# [Creating a ROS msg and srv](https://wiki.ros.org/ROS/Tutorials/CreatingMsgAndSrv)
 
 ## msg (message) - A simpe text files that are used to generate source code for messages in different languages. They are stored in the msg directory of a package
 
@@ -496,7 +496,7 @@ Similarly, any .srv files in the srv directory will have generated code in suppo
     For Python and Lisp, there will be an 'srv' folder beside the 'msg' folders.
 --------------------------------------------------------------------------------------------
 
-# https://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28python%29
+# [Writing a Simple Publisher and Subscriber (Python)](https://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28python%29)
 "Node" is the ROS term for an executable that is connected to the ROS network.
 
 Here we'll create the publisher ("talker") node which will continually broadcast a message:
@@ -581,7 +581,7 @@ Build the node, yes, even for python.
 > catkin_make
 --------------------------------------------------------------------------------------------
 
-# https://wiki.ros.org/ROS/Tutorials/ExaminingPublisherSubscriber
+# [Examining the Simple Publisher and Subscriber](https://wiki.ros.org/ROS/Tutorials/ExaminingPublisherSubscriber)
 
 ## Running Publisher
 > roscore
@@ -598,7 +598,7 @@ Source the setup after calling catkin_make or creating a new terminal.
 > rosrun beginner_tutorials listener.py  (Python)
 --------------------------------------------------------------------------------------------
 
-# https://wiki.ros.org/ROS/Tutorials/WritingServiceClient%28python%29
+# [Writing a Simple Service and Client (Python)](https://wiki.ros.org/ROS/Tutorials/WritingServiceClient%28python%29)
 
 ## Writing a Service Node
 Here we'll create the service ("add_two_ints_server") node which will receive two ints and return the sum.
@@ -680,15 +680,27 @@ catkin_install_python(PROGRAMS scripts/add_two_ints_client.py
 > catkin_make
 --------------------------------------------------------------------------------------------
 
-# https://wiki.ros.org/ROS/Tutorials/ExaminingServiceClient
-
+# [Examining the Simple Service and Client](https://wiki.ros.org/ROS/Tutorials/ExaminingServiceClient)
+```
+roscore
+```
 ## Running the service
-> roscore
-> rosrun myFirstPackage add_two_ints_server     (C++)
-> rosrun myFirstPackage add_two_ints_server.py  (Python)
+> For C++
+```
+rosrun myFirstPackage add_two_ints_server
+```
 
+> For Python
+```
+rosrun myFirstPackage add_two_ints_server.py
+```
 ## Running the Client
+> For C++
+```
+rosrun myFirstPackage add_two_ints_client 1 3
+```
 
-> roscore
-> rosrun myFirstPackage add_two_ints_client 1 3     (C++)
-> rosrun myFirstPackage add_two_ints_client.py 1 3  (Python) 
+> For Python
+```
+rosrun myFirstPackage add_two_ints_client.py 1 3
+```
