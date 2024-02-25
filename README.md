@@ -1,5 +1,4 @@
-# Installing and Configuring Your ROS Environment
-http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment
+# [Installing and Configuring Your ROS Environment](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment)
 
 ## What is ROS
 Set of software libraries that run on a linux system. Not an OS.
