@@ -416,3 +416,24 @@ Build the node, yes, even for python.
 > roscd myFirstPackage
 > cd ../..
 > catkin_make
+--------------------------------------------------------------------------------------------
+
+# https://wiki.ros.org/ROS/Tutorials/ExaminingPublisherSubscriber
+
+## Running Publisher
+> roscore
+Source the setup after calling catkin_make or creating a new terminal.
+> roscd myFirstPackage
+> cd ../..
+> source ./devel/setup.bash
+
+> rosrun beginner_tutorials talker      (C++)
+> rosrun beginner_tutorials talker.py   (Python) 
+
+## Running Subscriber
+> rosrun beginner_tutorials listener     (C++)
+> rosrun beginner_tutorials listener.py  (Python)
+--------------------------------------------------------------------------------------------
+
+# https://wiki.ros.org/ROS/Tutorials/WritingServiceClient%28python%29
+
