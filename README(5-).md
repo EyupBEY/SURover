@@ -212,7 +212,18 @@ To check:
 # https://wiki.ros.org/ROS/Tutorials/CreatingMsgAndSrv
 
 ## msg (message) - A simpe text files that are used to generate source code for messages in different languages. They are stored in the msg directory of a package
+
 ### Simple text files with a field type and field name per line.
+
+#### Field Types:
+    Header - contains a timestamp and coordinate frame information. You will frequently see the first line in a msg file have Header header.
+    int8, int16, int32, int64 (plus uint*)
+    float32, float64
+    string
+    time, duration
+    other msg files
+    variable-length array[] and fixed-length array[C]
+
 > roscd myFirstPackage
 > mkdir msg
 Here is an example of a msg that uses a Header, a string primitive, and two other msgs:
@@ -231,14 +242,38 @@ Add this lines to package.xml because we need to make sure that the msg files ar
 at build time, we need "message_generation",
 while at runtime, we only need "message_runtime"
 
-#### Field Types:
-    Header - contains a timestamp and coordinate frame information. You will frequently see the first line in a msg file have Header header.
-    int8, int16, int32, int64 (plus uint*)
-    float32, float64
-    string
-    time, duration
-    other msg files
-    variable-length array[] and fixed-length array[C]
+Add the "message_generation" dependency to the "find_package" call which already exists in your myFirstPackage/CMakeLists.txt so that you can generate messages.
+
+Modify the existing text to add message_generation before the closing parenthesis
+find_package(catkin REQUIRED COMPONENTS
+   roscpp
+   rospy
+   std_msgs
+   message_generation
+)
+
+catkin_package(
+  ...
+  CATKIN_DEPENDS message_runtime ...
+  ...)
+
+add_message_files(
+  FILES
+  Num.msg
+)
+
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
+
+Now we are ready to generate source files from your msg definition.
+
+Check 
+> rosmsg show [message type]
+    > rosmsg show myFirstPackage/Num
+    or
+    > rosmsg show Num
 
 ## srv (service) - A file that describes a service, it is composed of: request & response. They are stored in the srv directory.
 request and a response parts are separated by a '---' line. Here is an example of a srv file(A and B are request, Sum is response):
@@ -247,3 +282,31 @@ request and a response parts are separated by a '---' line. Here is an example o
     ---
     int64 Sum
 
+> roscd myFirstPackage
+> mkdir srv
+Instead of creating a srv definition by hand we copy an existing from another package by using roscp.
+> roscp [package_name] [file_to_copy_path] [copy_path]
+    > roscp rospy_tutorials AddTwoInts.srv srv/AddTwoInts.srv
+
+Add this lines to package.xml because we need to make sure that the msg files are turned into source code for C++, Python, and other languages:
+    <build_depend>message_generation</build_depend>
+    <exec_depend>message_runtime</exec_depend>
+at build time, we need "message_generation",
+while at runtime, we only need "message_runtime"
+
+Modify the existing text to add message_generation before the closing parenthesis
+find_package(catkin REQUIRED COMPONENTS
+   roscpp
+   rospy
+   std_msgs
+   message_generation
+)
+
+add_service_files(
+  FILES
+  AddTwoInts.srv
+)
+
+Check
+> rossrv show <service type>
+    > rossrv show myFirstPackage/AddTwoInts
