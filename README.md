@@ -70,7 +70,7 @@ echo $ROS_PACKAGE_PATH
 
 ---
 
-# [Creating a ROS Package](https://wiki.ros.org/ROS/Tutorials/CreatingPackage)
+# [ROS Packages](https://wiki.ros.org/ROS/Tutorials/CreatingPackage)
 
 ## Trivial Workspace
 * workspace_folder/        -- WORKSPACE
@@ -179,7 +179,7 @@ rospack depends myfirstpackage
 
 ---
 
-# [Understanding ROS Nodes](https://wiki.ros.org/ROS/Tutorials/UnderstandingNodes)
+# [ROS Nodes](https://wiki.ros.org/ROS/Tutorials/UnderstandingNodes)
 
 ## Graph Concepts
 **Nodes:** A node is an executable that uses ROS to communicate with other nodes by ROS client library(rospy, and roscpp).<br>
@@ -213,8 +213,6 @@ To test that whether or not it's up:
 rosnode ping my_turtle
 ```
 
----
-
 ## rosrun
 Allows you to use the package name to directly run a node within a package
 <br>
@@ -226,7 +224,9 @@ rosrun turtlesim turtlesim_node
 > [!TIP]
 > You can change the name, but first close the previous terminal: ```rosrun turtlesim turtlesim_node __name:=my_turtle```
 
-# [Understanding ROS Topics](https://wiki.ros.org/ROS/Tutorials/UnderstandingTopics)
+---
+
+# [ROS Topics](https://wiki.ros.org/ROS/Tutorials/UnderstandingTopics)
 
 ## Setup
 ```
@@ -301,7 +301,6 @@ rostopic pub [topic] [msg_type] [args]
 rostopic pub -1 /turtle1/cmd_vel geometry_msgs/Twist -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, 1.8]'
 ```
 
-Default | Left align
 -- | :-
 -1                  | Means only publish one message and exit<br>
 /turtle1/cmd_vel    | The name of the topic to publish<br>
@@ -339,7 +338,7 @@ rosrun rqt_plot rqt_plot
 
 ---
 
-# [Understanding ROS Services and Parameters](https://wiki.ros.org/ROS/Tutorials/UnderstandingServicesParams)
+# [ROS Services and Parameters](https://wiki.ros.org/ROS/Tutorials/UnderstandingServicesParams)
 
 ## rosservice
 ROS Services are another way that nodes can communicate with each other.<br>
@@ -526,7 +525,7 @@ rqt_graph
 
 ---
 
-# [Using rosed to edit files in ROS](https://wiki.ros.org/ROS/Tutorials/UsingRosEd)
+# [rosed](https://wiki.ros.org/ROS/Tutorials/UsingRosEd)
 
 ## rosed - edit a file within a package by using the package name rather than having to type the entire path to the package.
 > rosed [package_name] [filename]
