@@ -386,12 +386,25 @@ rosservice uri
 ```
 
 ## rosparam
-The Parameter Server can store: integers, floats, boolean, dictionaries, and lists.
-rosparam uses the YAML markup language for syntax:
-1 is an integer, 1.0 is a float, one is a string, true is a boolean, [1, 2, 3] is a list of integers, and {a: b, c: d} is a dictionary.
-> rosparam list                        list parameter names
-> rosparam set [param_name]            set parameter
-    > rosparam set /turtlesim/background_r 150         sets red channel of the background color 150
+The Parameter Server can store: integers, floats, boolean, dictionaries, and lists.<br>
+rosparam uses the YAML markup language for syntax:<br>
+* 1 is an integer
+* 1.0 is a float
+* one is a string
+* true is a boolean
+* [1, 2, 3] is a list of integers
+* {a: b, c: d} is a dictionary.
+
+To list parameter names:
+```
+rosparam list
+```
+
+To set parameter:
+```
+rosparam set [param_name]
+```
+*```rosparam set /turtlesim/background_r 150``` It sets red channel of the background color 150
 > rosparam get [param_name]            get parameter
     > rosparam get /turtlesim/background_g
         86
