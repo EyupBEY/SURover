@@ -1002,6 +1002,11 @@ For Python,
 ```
 rosrun myfirstpackage add_two_ints_server.py
 ```
+
+```txt
+Ready to add two ints.
+```
+
 ## Running the Client
 For C++,
 ```
@@ -1011,4 +1016,10 @@ rosrun myfirstpackage add_two_ints_client 1 3
 For Python,
 ```
 rosrun myfirstpackage add_two_ints_client.py 1 3
+```
+
+Output:
+```txt
+Requesting 1+3
+1 + 3 = 4
 ```
