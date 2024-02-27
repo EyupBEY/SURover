@@ -342,10 +342,17 @@ rosrun rqt_plot rqt_plot
 # [Understanding ROS Services and Parameters](https://wiki.ros.org/ROS/Tutorials/UnderstandingServicesParams)
 
 ## rosservice
-ROS Services are another way that nodes can communicate with each other. Services allow nodes to send a request and receive a response.
+ROS Services are another way that nodes can communicate with each other.<br>
+Services allow nodes to send a request and receive a response.<br><br>
 
-> rosservice list                   print information about active services
-> rosservice type [service]         print service type
+To print information about active services:
+```
+rosservice list                   
+```
+
+To print service type:
+
+> rosservice type [service]
     > rosservice type /clear
         std_srvs/Empty : Means it is empty service. it takes no arguments (i.e. it sends no data when making a request and receives no data when receiving a response)
     > rosservice type /spawn | rossrv show
