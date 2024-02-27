@@ -1003,6 +1003,7 @@ For Python,
 rosrun myfirstpackage add_two_ints_server.py
 ```
 
+Output:
 ```txt
 Ready to add two ints.
 ```
