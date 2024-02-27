@@ -836,18 +836,40 @@ catkin_make
 # [Examining the Simple Publisher and Subscriber](https://wiki.ros.org/ROS/Tutorials/ExaminingPublisherSubscriber)
 
 ## Running Publisher
-> roscore
-Source the setup after calling catkin_make or creating a new terminal.
-> roscd myfirstpackage
-> cd ../..
-> source ./devel/setup.bash
+```
+roscore
+```
 
-> rosrun myfirstpackage talker      (C++)
-> rosrun myfirstpackage talker.py   (Python) 
+Source the setup after calling catkin_make or creating a new terminal:
+```
+roscd myfirstpackage
+```
+```
+cd ../..
+```
+```
+source ./devel/setup.bash
+```
+
+For C++,
+```
+rosrun myfirstpackage talker
+```
+
+For Python,
+```
+rosrun myfirstpackage talker.py 
+```
 
 ## Running Subscriber
-> rosrun myfirstpackage listener     (C++)
-> rosrun myfirstpackage listener.py  (Python)
+For C++,
+```
+rosrun myfirstpackage listener
+```
+For Python,
+```
+rosrun myfirstpackage listener.py
+```
 
 ---
 
@@ -899,11 +921,19 @@ Add/Manipulate the following to CMAkeLists.txt in order to ensure the python scr
 ```
 
 ## Writing a Client Node
-> roscd myfirstpackage
-> touch scripts/add_two_ints_client.py
 
---> For clients you don't have to call init_node(). Wait_for_service must be called. This is a convenience method that blocks until the service named add_two_ints is available.
+```
+roscd myfirstpackage
+```
+```
+touch scripts/add_two_ints_client.py
+```
 
+> [!NOTE]
+> For clients you don't have to call init_node(). Wait_for_service must be called. This is a convenience method that blocks until the service named add_two_ints is available.
+
+Python code explained:
+```python
 #!/usr/bin/env python
 from __future__ import print_function
 import sys
@@ -914,13 +944,13 @@ def add_two_ints_client(x, y):
     try:
 
         add_two_ints = rospy.ServiceProxy('add_two_ints', AddTwoInts)
---> Next we create a handle(hizmet) for calling the service.
+# Next we create a handle(hizmet) for calling the service.
 
         resp1 = add_two_ints(x, y)
         return resp1.sum
     except rospy.ServiceException as e:
         print("Service call failed: %s"%e)
--->  The return value is an AddTwoIntsResponse object. If the call fails, a rospy.ServiceException may be thrown, so you should setup the appropriate try/except block.
+#  The return value is an AddTwoIntsResponse object. If the call fails, a rospy.ServiceException may be thrown, so you should setup the appropriate try/except block.
 
 def usage():
     return "%s [x y]"%sys.argv[0]
@@ -933,17 +963,28 @@ if __name__ == "__main__":
         sys.exit(1)
     print("Requesting %s+%s"%(x, y))
     print("%s + %s = %s"%(x, y, add_two_ints_client(x, y)))
+```
 
-> chmod +x scripts/add_two_ints_client.py
+```
+chmod +x scripts/add_two_ints_client.py
+```
 
 Add/Modify CMakeLists.txt:
-catkin_install_python(PROGRAMS scripts/add_two_ints_client.py
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
+```txt
+    catkin_install_python(PROGRAMS scripts/add_two_ints_client.py
+    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+    )
+```
 
-> roscd myfirstpackage
-> cd ../..
-> catkin_make
+```
+roscd myfirstpackage
+```
+```
+cd ../..
+```
+```
+catkin_make
+```
 
 ---
 
@@ -952,22 +993,22 @@ catkin_install_python(PROGRAMS scripts/add_two_ints_client.py
 roscore
 ```
 ## Running the service
-> For C++
+For C++,
 ```
 rosrun myfirstpackage add_two_ints_server
 ```
 
-> For Python
+For Python,
 ```
 rosrun myfirstpackage add_two_ints_server.py
 ```
 ## Running the Client
-> For C++
+For C++,
 ```
 rosrun myfirstpackage add_two_ints_client 1 3
 ```
 
-> For Python
+For Python,
 ```
 rosrun myfirstpackage add_two_ints_client.py 1 3
 ```
