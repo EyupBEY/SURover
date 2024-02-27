@@ -404,7 +404,7 @@ To set parameter:
 ```
 rosparam set [param_name]
 ```
-*```rosparam set /turtlesim/background_r 150``` It sets red channel of the background color 150
+* ```rosparam set /turtlesim/background_r 150``` It sets red channel of the background color 150
 > rosparam get [param_name]            get parameter
     > rosparam get /turtlesim/background_g
         86
