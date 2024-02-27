@@ -300,16 +300,20 @@ rostopic pub [topic] [msg_type] [args]
 ```
 rostopic pub -1 /turtle1/cmd_vel geometry_msgs/Twist -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, 1.8]'
 ```
->       -1                       (means only publish one message and exit)
-        /turtle1/cmd_vel         (the name of the topic to publish)
-        geometry_msgs/Twist      (type of the message)
-        --                       (tells the option parser that none of the following arguments is an option. This is required in cases where your arguments have a leading dash -, like negative numbers.)
-        The arguments are in YAML syntax(https://wiki.ros.org/ROS/YAMLCommandLine)
-    Turtle has stopped moving why because we need 1 Hz to keep moving using -r:
-    > rostopic pub /turtle1/cmd_vel geometry_msgs/Twist -r 1 -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, -1.8]'
-    Press the refresh button in the upper-left in rqt_graph.
-    > rostopic echo /turtle1/pose        (U can see the data published by our turtlesim)
 
+>-1                       (means only publish one message and exit)
+> /turtle1/cmd_vel         (the name of the topic to publish)
+> geometry_msgs/Twist      (type of the message)
+> --                       (tells the option parser that none of the following arguments is an option. This is required in cases where your arguments have a leading dash -, like negative numbers.)
+
+* The arguments are in YAML syntax(https://wiki.ros.org/ROS/YAMLCommandLine)
+* Turtle has stopped moving why because we need 1 Hz to keep moving using -r:
+    * ```rostopic pub /turtle1/cmd_vel geometry_msgs/Twist -r 1 -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, -1.8]'```
+        * Press the refresh button in the upper-left in rqt_graph.
+You can see the data published by our turtlesim:
+```
+rostopic echo /turtle1/pose
+```
 ### rostopic hz - Reports the average rate at which data is published
 > rostopic hz [topic]
     > rostopic hz /turtle1/pose
