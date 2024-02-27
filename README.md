@@ -740,7 +740,7 @@ wget https://raw.github.com/ros/ros_tutorials/kinetic-devel/rospy_tutorials/001_
 chmod +x talker.py
 ```
 
-Code explained:
+Python code explained:
 ```python
 #!/usr/bin/env python
 # Every Python ROS Node will have this declaration at the top. The first line makes sure your script is executed as a Python script.
