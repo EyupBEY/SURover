@@ -527,18 +527,29 @@ rqt_graph
 
 # [rosed](https://wiki.ros.org/ROS/Tutorials/UsingRosEd)
 
-## rosed - edit a file within a package by using the package name rather than having to type the entire path to the package.
-> rosed [package_name] [filename]
-    > rosed roscpp Logger.msg
-    > rosed myfirstpackage turtlemimic.launch
-Note: The default editor for rosed is vim. Thus, the abowed code probably won't work:
-Edit ~/.bashrc file to include:
-> export EDITOR='nano -w'
-or
-> export EDITOR='emacs -nw'
-if you prefer.
+## rosed
+Edit a file within a package by using the package name rather than having to type the entire path to the package.
+```
+rosed [package_name] [filename]
+```
+* ```rosed roscpp Logger.msg```
+* ```rosed myfirstpackage turtlemimic.launch```
+
+> [!Note]
+> The default editor for rosed is vim. Thus, the abowed code probably won't work:
+>Edit ~/.bashrc file to include:
+```
+export EDITOR='nano -w'
+```
+or if you prefer emacs:
+```
+export EDITOR='emacs -nw'
+```
+
 To check:
-> echo $EDITOR
+```
+echo $EDITOR
+```
 
 ---
 
