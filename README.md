@@ -623,7 +623,7 @@ To check:
 rosmsg show [message type]
 ```
 * ```rosmsg show myfirstpackage/Num```
-or
+<br>or
 * ```rosmsg show Num```
 
 ## srv (service) - A file that describes a service, it is composed of: request & response. They are stored in the srv directory.
