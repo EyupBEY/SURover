@@ -255,22 +255,32 @@ sudo apt-get install ros-<distro>-rqt-common-plugins
 ```
 rosrun rqt_graph rqt_graph
 ```
-* Uncheck the debug.
+> Uncheck the debug.
 * The text abowed the arrow is TOPIC.
 * The semi eliptics are NODEs.
     * Nodes are communicating via topic.
 
 ## rostopic
-> rostopic -h
+```
+rostopic -h
+```
 or press <tab> to see sub-commands.
-> rostopic echo [topic]
-    > rostopic list                                 (To see the topics)
-    > rostopic echo /turtle1/cmd_vel                (/turtle1/cmd_vel is a topic mentioned in rqt_graph)
+```
+rostopic echo [topic]
+```
+To see the topics: ```rostopic list```
+```
+rostopic echo /turtle1/cmd_vel
+```
+> /turtle1/cmd_vel is a topic mentioned in rqt_graph
 
 ### rostopic list
-> rostopic list -h
-> rostopic list -v                                   (To see verbose option)
-publisher (turtle_teleop_key), subscriber (turtlesim_node)
+```
+rostopic list -h
+```
+To see verbose option: ```rostopic list -v```
+Publisher: turtle_teleop_key<br>
+Subscriber: turtlesim_node
 
 ### rostopic type - ROS Messages - Shows the type of the message
 > rostopic type [topic]
