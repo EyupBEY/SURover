@@ -548,23 +548,27 @@ echo $EDITOR
 
 ---
 
-# [Creating a ROS msg and srv](https://wiki.ros.org/ROS/Tutorials/CreatingMsgAndSrv)
+# [ROS msg and srv](https://wiki.ros.org/ROS/Tutorials/CreatingMsgAndSrv)
 
-## msg (message) - A simpe text files that are used to generate source code for messages in different languages. They are stored in the msg directory of a package
+## msg (message)
+A simpe text files that are used to generate source code for messages in different languages. They are stored in the msg directory of a package.<br>
+Simple text files with a field type and field name per line.<br><br>
 
-### Simple text files with a field type and field name per line.
+**Field Types:**<br>
+* Header - contains a timestamp and coordinate frame information. You will frequently see the first line in a msg file have Header header.
+* int8, int16, int32, int64 (plus uint*)
+* float32, float64
+* string
+* time, duration
+* other msg files
+* variable-length array[] and fixed-length array[C]
+```
+roscd myfirstpackage
+```
+```
+mkdir msg
+```
 
-#### Field Types:
-    Header - contains a timestamp and coordinate frame information. You will frequently see the first line in a msg file have Header header.
-    int8, int16, int32, int64 (plus uint*)
-    float32, float64
-    string
-    time, duration
-    other msg files
-    variable-length array[] and fixed-length array[C]
-
-> roscd myfirstpackage
-> mkdir msg
 Here is an example of a msg that uses a Header, a string primitive, and two other msgs:
     Header header
     string child_frame_id
