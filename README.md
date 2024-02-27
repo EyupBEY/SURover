@@ -198,10 +198,14 @@ roscore
 > ``` sudo chown -R <your_username> ~/.ros ```
 
 ## Using rosnode(open new terminal)
-> rosnode list
-    /rosout             -->Active nodes are listed
-> rosnode info /rosout
-
+```
+rosnode list
+```
+>**Output:** <br>
+/rosout             -->Active nodes are listed
+```
+rosnode info /rosout
+```
 ## rosrun - Allows you to use the package name to directly run a node within a package
 > rosrun [package_name] [node_name]
     > rosrun turtlesim turtlesim_node
