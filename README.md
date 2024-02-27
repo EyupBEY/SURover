@@ -229,9 +229,17 @@ rosrun turtlesim turtlesim_node
 # [Understanding ROS Topics](https://wiki.ros.org/ROS/Tutorials/UnderstandingTopics)
 
 ## Setup
-> roscore                                 (new terminal)
-> rosrun turtlesim turtlesim_node         (new terminal)
-> rosrun turtlesim turtle_teleop_key      (new terminal) use arrow keys to move turtle make sure your typings recorded in the terminal
+```
+roscore
+```
+```
+rosrun turtlesim turtlesim_node
+```
+```
+rosrun turtlesim turtle_teleop_key
+```
+> [!NOTE]
+> Use arrow keys to move turtle, and make sure your typings recorded in the terminal
 
 ## ROS Topics
 The turtlesim_node and the turtle_teleop_key node are communicating with each other over a ROS Topic.
