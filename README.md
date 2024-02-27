@@ -369,7 +369,6 @@ Call the service with the provided args:
 ```
 rosservice call [service] [args]
 ```
-<br>
 ```
 rosservice call /clear
 ```
