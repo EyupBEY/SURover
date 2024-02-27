@@ -615,13 +615,16 @@ generate_messages(
   std_msgs
 )
 ```
+
 Now we are ready to generate source files from your msg definition.
 
-Check 
-> rosmsg show [message type]
-    > rosmsg show myfirstpackage/Num
-    or
-    > rosmsg show Num
+To check:
+``` 
+rosmsg show [message type]
+```
+* ```rosmsg show myfirstpackage/Num```
+or
+* ```rosmsg show Num```
 
 ## srv (service) - A file that describes a service, it is composed of: request & response. They are stored in the srv directory.
 request and a response parts are separated by a '---' line. Here is an example of a srv file(A and B are request, Sum is response):
