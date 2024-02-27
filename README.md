@@ -527,7 +527,6 @@ rqt_graph
 
 # [rosed](https://wiki.ros.org/ROS/Tutorials/UsingRosEd)
 
-## rosed
 Edit a file within a package by using the package name rather than having to type the entire path to the package.
 ```
 rosed [package_name] [filename]
