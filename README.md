@@ -719,59 +719,74 @@ Similarly, any .srv files in the srv directory will have generated code in suppo
 Here we'll create the publisher ("talker") node which will continually broadcast a message:
 
 Add the following to your CMakeLists.txt(This makes sure the python script gets installed properly, and uses the right python interpreter):
+```txt
 catkin_install_python(PROGRAMS scripts/talker.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
-
-> roscd myfirstpackage
-> mkdir scripts
-> cd scripts
-> wget https://raw.github.com/ros/ros_tutorials/kinetic-devel/rospy_tutorials/001_talker_listener/talker.py
-> chmod +x talker.py
+```
+```
+roscd myfirstpackage
+```
+```
+mkdir scripts
+```
+```
+cd scripts
+```
+```
+wget https://raw.github.com/ros/ros_tutorials/kinetic-devel/rospy_tutorials/001_talker_listener/talker.py
+```
+```
+chmod +x talker.py
+```
 
 Code explained:
-1    #!/usr/bin/env python
--->  Every Python ROS Node will have this declaration at the top. The first line makes sure your script is executed as a Python script.
+```python
+#!/usr/bin/env python
+# Every Python ROS Node will have this declaration at the top. The first line makes sure your script is executed as a Python script.
 
-3    import rospy
---> Requirement for creating a ROS node.
-4    from std_msgs.msg import String
---> ?
+import rospy
+# Requirement for creating a ROS node.
 
-7    pub = rospy.Publisher('chatter', String, queue_size=10)
---> ?
-8    rospy.init_node('talker', anonymous=True)
---> NOTE: the name must be a base name (talker) , i.e. it cannot contain any slashes "/".
---> anonymous = True ensures that your node has a unique name by adding random numbers to the end of NAME.
+from std_msgs.msg import String
+# ?
 
-9     rate = rospy.Rate(10) # 10hz
---> With the help of its method sleep(), it offers a convenient way for looping at the desired rate. With its argument of 10, we should expect to go through the loop 10 times per second (as long as our processing time does not exceed 1/10th of a second!)
+pub = rospy.Publisher('chatter', String, queue_size=10)
+# ?
 
-10     while not rospy.is_shutdown():
-11         hello_str = "hello world %s" % rospy.get_time()
-12         rospy.loginfo(hello_str)
-13         pub.publish(hello_str)
-14         rate.sleep()
---> This loop is a fairly standard rospy construct: checking the rospy.is_shutdown() flag and then doing work. You have to check is_shutdown() to check if your program should exit (e.g. if there is a Ctrl-C or otherwise).
---> In this case, the "work" is a call to pub.publish(hello_str) that publishes a string to our chatter topic.
---> The loop calls rate.sleep(), which sleeps just long enough to maintain the desired rate through the loop. Same as time.sleep()
---> This loop also calls rospy.loginfo(str), which performs triple-duty:
-        The messages get printed to screen,
-        It gets written to the Node's log file
-        It gets written to rosout.
-            rosout is for debugging: you can pull up messages using rqt_console instead of having to find the console window with your Node's output.
+rospy.init_node('talker', anonymous=True)
+# NOTE: the name must be a base name (talker) , i.e. it cannot contain any slashes "/".
+# anonymous = True ensures that your node has a unique name by adding random numbers to the end of NAME.
+
+rate = rospy.Rate(10) # 10hz
+# With the help of its method sleep(), it offers a convenient way for looping at the desired rate. With its argument of 10, we should expect to go through the loop 10 times per second (as long as our processing time does not exceed 1/10th of a second!)
+
+while not rospy.is_shutdown():
+    hello_str = "hello world %s" % rospy.get_time()
+    rospy.loginfo(hello_str)
+    pub.publish(hello_str)
+    rate.sleep()
+# This loop is a fairly standard rospy construct: checking the rospy.is_shutdown() flag and then doing work. You have to check is_shutdown() to check if your program should exit (e.g. if there is a Ctrl-C or otherwise).
+# In this case, the "work" is a call to pub.publish(hello_str) that publishes a string to our chatter topic.
+# The loop calls rate.sleep(), which sleeps just long enough to maintain the desired rate through the loop. Same as time.sleep()
+# This loop also calls rospy.loginfo(str), which performs triple-duty:
+#   The messages get printed to screen,
+#   It gets written to the Node's log file
+#   It gets written to rosout.
+#       rosout is for debugging: you can pull up messages using rqt_console instead of having to find the console window with your Node's output.
 
 std_msgs.msg.String is a very simple message type. Same as:
     msg = String()
     msg.data = str    
-  or
+# or
     String(data=str)
 
-17     try:
-18         talker()
-19     except rospy.ROSInterruptException:
-20         pass
---> In addition to the standard Python __main__ check, this catches a rospy.ROSInterruptException exception, which can be thrown by rospy.sleep() and rospy.Rate.sleep() methods when Ctrl-C is pressed or your Node is otherwise shutdown. The reason this exception is raised is so that you don't accidentally continue executing code after the sleep().
+try:
+    talker()
+except rospy.ROSInterruptException:
+    pass
+# In addition to the standard Python __main__ check, this catches a rospy.ROSInterruptException exception, which can be thrown by rospy.sleep() and rospy.Rate.sleep() methods when Ctrl-C is pressed or your Node is otherwise shutdown. The reason this exception is raised is so that you don't accidentally continue executing code after the sleep().
+```
 
 ## Create Subscriber Node - A node to receive messages
 > roscd myfirstpackage/scripts/
