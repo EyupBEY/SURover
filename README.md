@@ -447,23 +447,44 @@ rosservice call /clear
 
 ---
 
-# [Using rqt_console and roslaunch](https://wiki.ros.org/ROS/Tutorials/UsingRqtconsoleRoslaunch)
+# [rqt_console and roslaunch](https://wiki.ros.org/ROS/Tutorials/UsingRqtconsoleRoslaunch)
 
 ## rqt_console and rqt_logger_level
 ROS's logging framework to display output from nodes. rqt_logger_level allows us to change the verbosity level (DEBUG, WARN, INFO, and ERROR) of nodes as they run.
-> rosrun rqt_console rqt_console
-> rosrun rqt_logger_level rqt_logger_level
+```
+rosrun rqt_console rqt_console
+```
+```
+rosrun rqt_logger_level rqt_logger_level
+```
 
 ## roslaunch
-> cd ~/Desktop/SuRover
-> source devel/setup.bash
-> roscd myfirstpackage
-> roslaunch [package] [filename.launch]      Starts nodes as defined in a launch file.
-> roscd myfirstpackage
-> mkdir launch
-> cd launch
-Create a file named turtlemimic.launch
+```
+cd ~/Desktop/SuRover
+```
+```
+source devel/setup.bash
+```
+```
+roscd myfirstpackage
+```
 
+To start nodes as defined in a launch file:
+```
+roslaunch [package] [filename.launch]
+```
+```
+roscd myfirstpackage
+```
+```
+mkdir launch
+```
+```
+cd launch
+```
+
+Create a file named turtlemimic.launch, and insert the code below:
+```xml
 <launch> <!-- To identify as a launch file -->
 
     <group ns="turtlesim1">
@@ -485,14 +506,23 @@ Create a file named turtlemimic.launch
     <!-- Here we start the mimic node with the topics input and output renamed to turtlesim1 and turtlesim2. This renaming will cause turtlesim2 to mimic turtlesim1. -->
 
 </launch>
+```
 
-> roslaunch myfirstpackage turtlemimic.launch
-> rostopic pub /turtlesim1/turtle1/cmd_vel geometry_msgs/Twist -r 1 -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, -1.8]'
+```
+roslaunch myfirstpackage turtlemimic.launch
+```
+```
+rostopic pub /turtlesim1/turtle1/cmd_vel geometry_msgs/Twist -r 1 -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, -1.8]'
+```
 
 Run belowed command and select Plugins > Introspection > Node Graph:
-> rqt
+```
+rqt
+```
 or
-> rqt_graph
+```
+rqt_graph
+```
 
 ---
 
