@@ -351,18 +351,40 @@ rosservice list
 ```
 
 To print service type:
+```
+rosservice type [service]
+```
+```
+rosservice type /clear
+```
+> **std_srvs/Empty:** Means it is empty service. it takes no arguments (i.e. it sends no data when making a request and receives no data when receiving a response)
+```
+rosservice type /spawn | rossrv show
+```
+To create a new turtle at given location and orientation:
+```
+rosservice call /spawn 2 2 0.2 "optionalNameSection"
+```
+Call the service with the provided args:
+```
+rosservice call [service] [args]
+```
+<br>
+```
+rosservice call /clear
+```
+> It clears the turtlesim screen
+> It has no arguments because /clear is type of empty
 
-> rosservice type [service]
-    > rosservice type /clear
-        std_srvs/Empty : Means it is empty service. it takes no arguments (i.e. it sends no data when making a request and receives no data when receiving a response)
-    > rosservice type /spawn | rossrv show
-    > rosservice call /spawn 2 2 0.2 "optionalNameSection"    creates a new turtle at given location and orientation
-> rosservice call [service] [args]  call the service with the provided args
-    > rosservice call /clear
-        It clears the turtlesim screen
-        It has no arguments because /clear is type of empty
-> rosservice find                   find services by service type
-> rosservice uri                    print service ROSRPC uri
+To find services by service type:
+```
+rosservice find
+```
+
+To print service ROSRPC uri:
+```
+rosservice uri
+```
 
 ## rosparam
 The Parameter Server can store: integers, floats, boolean, dictionaries, and lists.
