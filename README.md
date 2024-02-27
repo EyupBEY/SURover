@@ -535,7 +535,7 @@ rosed [package_name] [filename]
 * ```rosed myfirstpackage turtlemimic.launch```
 
 > [!Note]
-> The default editor for rosed is vim. Thus, the abowed code probably won't work:<br>
+> The default editor for rosed is vim. Thus, the abowed code probably won't work.<br>
 > Edit ~/.bashrc file to include:<br>
 > ```export EDITOR='nano -w'```
 > or if you prefer emacs:
