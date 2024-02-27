@@ -788,29 +788,48 @@ except rospy.ROSInterruptException:
 # In addition to the standard Python __main__ check, this catches a rospy.ROSInterruptException exception, which can be thrown by rospy.sleep() and rospy.Rate.sleep() methods when Ctrl-C is pressed or your Node is otherwise shutdown. The reason this exception is raised is so that you don't accidentally continue executing code after the sleep().
 ```
 
-## Create Subscriber Node - A node to receive messages
-> roscd myfirstpackage/scripts/
-> wget https://raw.github.com/ros/ros_tutorials/kinetic-devel/rospy_tutorials/001_talker_listener/listener.py
-> chmod +x listener.py
+## Create Subscriber Node
+It is a node to receive messages
+```
+roscd myfirstpackage/scripts/
+```
+```
+wget https://raw.github.com/ros/ros_tutorials/kinetic-devel/rospy_tutorials/001_talker_listener/listener.py
+```
+```
+chmod +x listener.py
+```
 
 Edit the catkin_install_python() call in your CMakeLists.txt:
+```txt
     catkin_install_python(PROGRAMS scripts/talker.py scripts/listener.py
         DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
     )
+```
 
-15     rospy.init_node('listener', anonymous=True)
-17     rospy.Subscriber("chatter", String, callback)
-19     # spin() simply keeps python from exiting until this node is stopped
-20     rospy.spin()
---> This declares that your node subscribes to the chatter topic which is of type std_msgs.msgs.String. When new messages are received, callback is invoked(called) with the message as the first argument.
---> We also changed up the call to rospy.init_node() somewhat.
---> We've added the anonymous=True keyword argument. ROS requires that each node have a unique name. If a node with the same name comes up, it bumps the previous one. This is so that malfunctioning nodes can easily be kicked off the network. The anonymous=True flag tells rospy to generate a unique name for the node so that you can have multiple listener.py nodes run easily.
---> Finally, rospy.spin() simply keeps your node from exiting until the node has been shutdown. Unlike roscpp, rospy.spin() does not affect the subscriber callback functions, as those have their own threads.
+Python code explained:
+```python
+rospy.init_node('listener', anonymous=True)
+rospy.Subscriber("chatter", String, callback)
+# This declares that your node subscribes to the chatter topic which is of type std_msgs.msgs.String. When new messages are received, callback is invoked(called) with the message as the first argument.
+# We also changed up the call to rospy.init_node() somewhat.
+# We've added the anonymous=True keyword argument. ROS requires that each node have a unique name. If a node with the same name comes up, it bumps the previous one. This is so that malfunctioning nodes can easily be kicked off the network. The anonymous=True flag tells rospy to generate a unique name for the node so that you can have multiple listener.py nodes run easily.
 
-Build the node, yes, even for python.
-> roscd myfirstpackage
-> cd ../..
-> catkin_make
+# spin() simply keeps python from exiting until this node is stopped
+rospy.spin()
+# Finally, rospy.spin() simply keeps your node from exiting until the node has been shutdown. Unlike roscpp, rospy.spin() does not affect the subscriber callback functions, as those have their own threads.
+```
+
+Build the node, yes, even for python:
+```
+roscd myfirstpackage
+```
+```
+cd ../..
+```
+```
+catkin_make
+```
 
 ---
 
