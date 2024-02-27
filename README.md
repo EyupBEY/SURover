@@ -316,17 +316,26 @@ You can see the data published by our turtlesim:
 ```
 rostopic echo /turtle1/pose
 ```
-### rostopic hz - Reports the average rate at which data is published
-> rostopic hz [topic]
-    > rostopic hz /turtle1/pose
-
-> rostopic type /turtle1/cmd_vel | rosmsg show
+### rostopic hz
+Reports the average rate at which data is published
+```
+rostopic hz [topic]
+```
+```
+rostopic hz /turtle1/pose
+```
+```
+rostopic type /turtle1/cmd_vel | rosmsg show
+```
 
 ## rqt_plot
 It displays a scrolling time plot of the data published on topics.
-Note: If you're using electric or earlier, rqt is not available. Use rxplot instead.
-> rosrun rqt_plot rqt_plot
-Type to the Topic bar: /turtle1/pose/x  or  /turtle1/pose/y   or /turtle1/pose/theta
+> [!Note]
+> If you're using electric or earlier, rqt is not available. Use rxplot instead.
+```
+rosrun rqt_plot rqt_plot
+```
+> Type one of them to the Topic bar: /turtle1/pose/x or /turtle1/pose/y or /turtle1/pose/theta
 
 ---
 
