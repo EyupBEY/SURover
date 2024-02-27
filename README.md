@@ -278,15 +278,19 @@ rostopic echo /turtle1/cmd_vel
 ```
 rostopic list -h
 ```
-To see verbose option: ```rostopic list -v```
+To see verbose option: ```rostopic list -v```<br>
 Publisher: turtle_teleop_key<br>
 Subscriber: turtlesim_node
 
-### rostopic type - ROS Messages - Shows the type of the message
-> rostopic type [topic]
-    > rostopic type /turtle1/cmd_vel
-        To see the details:
-        > rosmsg show geometry_msgs/Twist
+### rostopic type
+Shows the type of the message
+```
+rostopic type [topic]
+```
+```
+rostopic type /turtle1/cmd_vel
+```
+To see the details: ```rosmsg show geometry_msgs/Twist```
 
 ### rostopic pub - Publishes data
 > rostopic pub [topic] [msg_type] [args]
