@@ -570,6 +570,7 @@ mkdir msg
 ```
 
 Here is an example of a msg that uses a Header, a string primitive, and two other msgs:
+```msg
     Header header
     string child_frame_id
     geometry_msgs/PoseWithCovariance pose
@@ -578,7 +579,7 @@ Here is an example of a msg that uses a Header, a string primitive, and two othe
     string last_name
     uint8 age
     uint32 score
-
+```
 Add this lines to package.xml because we need to make sure that the msg files are turned into source code for C++, Python, and other languages:
     <build_depend>message_generation</build_depend>
     <exec_depend>message_runtime</exec_depend>
