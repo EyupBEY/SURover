@@ -242,17 +242,23 @@ rosrun turtlesim turtle_teleop_key
 > Use arrow keys to move turtle, and make sure your typings recorded in the terminal
 
 ## ROS Topics
-The turtlesim_node and the turtle_teleop_key node are communicating with each other over a ROS Topic.
+The turtlesim_node and the turtle_teleop_key node are communicating with each other over a ROS Topic.<br>
 turtle_teleop_key is publishing the key strokes on a topic, while turtlesim subscribes to the same topic to receive the key strokes.
 
 ## Using rqt_graph
-> sudo apt-get install ros-<distro>-rqt
-> sudo apt-get install ros-<distro>-rqt-common-plugins
-> rosrun rqt_graph rqt_graph
-    Uncheck the debug.
-    The text abowed the arrow is TOPIC.
-    The semi eliptics are NODEs.
-        Nodes are communicating via topic.
+```
+sudo apt-get install ros-<distro>-rqt
+```
+```
+sudo apt-get install ros-<distro>-rqt-common-plugins
+```
+```
+rosrun rqt_graph rqt_graph
+```
+* Uncheck the debug.
+* The text abowed the arrow is TOPIC.
+* The semi eliptics are NODEs.
+    * Nodes are communicating via topic.
 
 ## rostopic
 > rostopic -h
