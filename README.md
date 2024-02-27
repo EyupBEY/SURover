@@ -435,6 +435,7 @@ To load parameters from a file to our new workspace:
 rosparam load [file_name] [namespace]
 ```
 * ```rosparam load params.yaml copy_turtle```
+<br>
 To delete parameter:
 ```
 rosparam delete
