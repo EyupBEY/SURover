@@ -580,15 +580,19 @@ Here is an example of a msg that uses a Header, a string primitive, and two othe
     uint8 age
     uint32 score
 ```
-Add this lines to package.xml because we need to make sure that the msg files are turned into source code for C++, Python, and other languages:
+
+Add belowed lines to package.xml because we need to make sure that the msg files are turned into source code for C++, Python, and other languages:
+```xml
     <build_depend>message_generation</build_depend>
     <exec_depend>message_runtime</exec_depend>
-at build time, we need "message_generation",
-while at runtime, we only need "message_runtime"
+```
+* at build time, we need "message_generation",
+* while at runtime, we only need "message_runtime"
 
 Add the "message_generation" dependency to the "find_package" call which already exists in your myfirstpackage/CMakeLists.txt so that you can generate messages.
 
-Modify the existing text to add message_generation before the closing parenthesis
+Modify the existing text to add message_generation before the closing parenthesis:
+```txt
 find_package(catkin REQUIRED COMPONENTS
    roscpp
    rospy
@@ -610,7 +614,7 @@ generate_messages(
   DEPENDENCIES
   std_msgs
 )
-
+```
 Now we are ready to generate source files from your msg definition.
 
 Check 
