@@ -405,24 +405,25 @@ To set parameter:
 rosparam set [param_name]
 ```
 * ```rosparam set /turtlesim/background_r 150``` It sets red channel of the background color 150
-> rosparam get [param_name]            get parameter
-    > rosparam get /turtlesim/background_g
-        86
-    > rosparam get /                   Shows the contents of the entire Parameter Server
-        rosdistro: 'noetic
+To get parameter:
+```
+rosparam get [param_name]
+```
+* ```rosparam get /turtlesim/background_g```
+* ```rosparam get /``` It shows the contents of the entire Parameter Server
+>       rosdistro: 'noetic
+>        '
+>        roslaunch:
+>        uris:
+>            host_nxt__43407: http://nxt:43407/
+>        rosversion: '1.15.5
+>        '
+>        run_id: 7ef687d8-9ab7-11ea-b692-fcaa1494dbf9
+>        turtlesim:
+>        background_b: 255
+>        background_g: 86
+>        background_r: 69
 
-        '
-        roslaunch:
-        uris:
-            host_nxt__43407: http://nxt:43407/
-        rosversion: '1.15.5
-
-        '
-        run_id: 7ef687d8-9ab7-11ea-b692-fcaa1494dbf9
-        turtlesim:
-        background_b: 255
-        background_g: 86
-        background_r: 69
 > rosparam dump [file_name] [namespace]                        dump parameters to file to use later
     > rosparam dump params.yaml
 > rosparam load [file_name] [namespace]                        load parameters from file
