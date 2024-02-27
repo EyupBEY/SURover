@@ -855,11 +855,19 @@ Source the setup after calling catkin_make or creating a new terminal.
 
 ## Writing a Service Node
 Here we'll create the service ("add_two_ints_server") node which will receive two ints and return the sum.
-Do the things mentioned in one of the previous sections (srv (service) - A file that describes a service, it is composed of: request & response. They are stored in the srv directory.)
 
-> roscd myfirstpackage
-> touch scripts/add_two_ints_server.py
+> [!IMPORTANT]
+> Do the things mentioned in one of the previous sections (srv (service) - A file that describes a service, it is composed of: request & response. They are stored in the srv directory.)
 
+```
+roscd myfirstpackage
+```
+```
+touch scripts/add_two_ints_server.py
+```
+
+Python code explained:
+```python
 #!/usr/bin/env python
 from __future__ import print_function
 from myfirstpackage.srv import AddTwoInts,AddTwoIntsResponse
@@ -875,15 +883,20 @@ def add_two_ints_server():
 if __name__ == "__main__":
     add_two_ints_server()
 
-12     s = rospy.Service('add_two_ints', AddTwoInts, handle_add_two_ints)
---> This declares a new service named add_two_ints with the AddTwoInts service type. All requests are passed to handle_add_two_ints function. handle_add_two_ints is called with instances of AddTwoIntsRequest and returns instances of AddTwoIntsResponse.
+s = rospy.Service('add_two_ints', AddTwoInts, handle_add_two_ints)
+# This declares a new service named add_two_ints with the AddTwoInts service type. All requests are passed to handle_add_two_ints function. handle_add_two_ints is called with instances of AddTwoIntsRequest and returns instances of AddTwoIntsResponse.
+```
 
-> chmod +x scripts/add_two_ints_server.py
+```
+chmod +x scripts/add_two_ints_server.py
+```
 
 Add/Manipulate the following to CMAkeLists.txt in order to ensure the python script gets installed properly, and uses the right python interpreter:
+```txt
     catkin_install_python(PROGRAMS scripts/add_two_ints_server.py
     DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
     )
+```
 
 ## Writing a Client Node
 > roscd myfirstpackage
