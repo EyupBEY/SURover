@@ -197,7 +197,7 @@ roscore
 > If it doesn't work, it is probably because /.ros is owned by root:
 > ``` sudo chown -R <your_username> ~/.ros ```
 
-## Using rosnode(open new terminal)
+## rosnode
 ```
 rosnode list
 ```
@@ -206,9 +206,13 @@ rosnode list
 ```
 rosnode info /rosout
 ```
-## rosrun - Allows you to use the package name to directly run a node within a package
+## rosrun
+Allows you to use the package name to directly run a node within a package
+<br>
 > rosrun [package_name] [node_name]
-    > rosrun turtlesim turtlesim_node
+```
+rosrun turtlesim turtlesim_node
+```
 
 You can change the name, but first close the previous terminal:
 > rosrun turtlesim turtlesim_node __name:=my_turtle
