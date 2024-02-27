@@ -290,12 +290,17 @@ rostopic type [topic]
 ```
 rostopic type /turtle1/cmd_vel
 ```
-To see the details: ```rosmsg show geometry_msgs/Twist```
+To see the details:```rosmsg show geometry_msgs/Twist```
 
-### rostopic pub - Publishes data
-> rostopic pub [topic] [msg_type] [args]
-    > rostopic pub -1 /turtle1/cmd_vel geometry_msgs/Twist -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, 1.8]'
-        -1                       (means only publish one message and exit)
+### rostopic pub
+Publishes data
+```
+rostopic pub [topic] [msg_type] [args]
+```
+```
+rostopic pub -1 /turtle1/cmd_vel geometry_msgs/Twist -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, 1.8]'
+```
+>       -1                       (means only publish one message and exit)
         /turtle1/cmd_vel         (the name of the topic to publish)
         geometry_msgs/Twist      (type of the message)
         --                       (tells the option parser that none of the following arguments is an option. This is required in cases where your arguments have a leading dash -, like negative numbers.)
