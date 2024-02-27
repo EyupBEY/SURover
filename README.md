@@ -206,6 +206,15 @@ rosnode list
 ```
 rosnode info /rosout
 ```
+
+> Clean the rosnode list with:```rosnode cleanup```
+To test that whether or not it's up:
+```
+rosnode ping my_turtle
+```
+
+---
+
 ## rosrun
 Allows you to use the package name to directly run a node within a package
 <br>
@@ -214,16 +223,8 @@ Allows you to use the package name to directly run a node within a package
 rosrun turtlesim turtlesim_node
 ```
 
-You can change the name, but first close the previous terminal:
-> rosrun turtlesim turtlesim_node __name:=my_turtle
-
-## Clean the rosnode list with:
-> rosnode cleanup
-
-To test that it's up:
-> rosnode ping my_turtle
-
----
+> [!TIP]
+> You can change the name, but first close the previous terminal: ```rosrun turtlesim turtlesim_node __name:=my_turtle```
 
 # [Understanding ROS Topics](https://wiki.ros.org/ROS/Tutorials/UnderstandingTopics)
 
