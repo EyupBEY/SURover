@@ -182,18 +182,22 @@ rospack depends myfirstpackage
 # [Understanding ROS Nodes](https://wiki.ros.org/ROS/Tutorials/UnderstandingNodes)
 
 ## Graph Concepts
-Nodes: A node is an executable that uses ROS to communicate with other nodes by ROS client library.
-    Client Libs: rospy, and roscpp
-Messages: ROS data type used when subscribing or publishing to a topic.
-Topics: Nodes can publish messages to a topic as well as subscribe to a topic to receive messages.
-Master: Name service for ROS (i.e. helps nodes find each other)
-rosout: ROS equivalent of stdout/stderr
-roscore: Master + rosout + parameter server (parameter server will be introduced later)
+**Nodes:** A node is an executable that uses ROS to communicate with other nodes by ROS client library(rospy, and roscpp).<br>
+**Messages:** ROS data type used when subscribing or publishing to a topic.<br>
+**Topics:** Nodes can publish messages to a topic as well as subscribe to a topic to receive messages.<br>
+**Master:** Name service for ROS (i.e. helps nodes find each other)<br>
+**rosout:** ROS equivalent of stdout/stderr<br>
+**roscore:** Master + rosout + parameter server (parameter server will be introduced later)
 
 ## Run first when using ROS
-> roscore
-if doesn't work, it is probably because /.ros is owned by root:
-> sudo chown -R <your_username> ~/.ros
+```
+roscore
+```
+> [!TIP]
+> If it doesn't work, it is probably because /.ros is owned by root:
+```
+sudo chown -R <your_username> ~/.ros
+```
 
 ## Using rosnode(open new terminal)
 > rosnode list
