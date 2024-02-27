@@ -195,7 +195,7 @@ roscore
 ```
 > [!TIP]
 > If it doesn't work, it is probably because /.ros is owned by root:
-```
+> ```
 sudo chown -R <your_username> ~/.ros
 ```
 
