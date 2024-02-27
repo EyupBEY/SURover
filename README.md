@@ -626,26 +626,41 @@ rosmsg show [message type]
 <br>or
 * ```rosmsg show Num```
 
-## srv (service) - A file that describes a service, it is composed of: request & response. They are stored in the srv directory.
+## srv (service)
+A file that describes a service, it is composed of: request & response.
+
+They are stored in the srv directory.
+
 request and a response parts are separated by a '---' line. Here is an example of a srv file(A and B are request, Sum is response):
+```txt
     int64 A
     int64 B
     ---
     int64 Sum
+```
 
-> roscd myfirstpackage
-> mkdir srv
-Instead of creating a srv definition by hand we copy an existing from another package by using roscp.
-> roscp [package_name] [file_to_copy_path] [copy_path]
-    > roscp rospy_tutorials AddTwoInts.srv srv/AddTwoInts.srv
+```
+roscd myfirstpackage
+```
+```
+mkdir srv
+```
+Instead of creating a srv definition by hand we copy an existing from another package by using roscp:
+```
+roscp [package_name] [file_to_copy_path] [copy_path]
+```
+* ```roscp rospy_tutorials AddTwoInts.srv srv/AddTwoInts.srv```
 
 Add this lines to package.xml because we need to make sure that the msg files are turned into source code for C++, Python, and other languages:
+```xml
     <build_depend>message_generation</build_depend>
     <exec_depend>message_runtime</exec_depend>
-at build time, we need "message_generation",
-while at runtime, we only need "message_runtime"
+```
+* at build time, we need "message_generation",
+* while at runtime, we only need "message_runtime"
 
-Modify the existing text to add message_generation before the closing parenthesis
+Modify the existing text to add message_generation before the closing parenthesis:
+```txt
 find_package(catkin REQUIRED COMPONENTS
    roscpp
    rospy
@@ -657,31 +672,44 @@ add_service_files(
   FILES
   AddTwoInts.srv
 )
+```
 
-Check
-> rossrv show <service type>
-    > rossrv show myfirstpackage/AddTwoInts
+To check:
+```
+rossrv show <service type>
+```
+* ```rossrv show myfirstpackage/AddTwoInts```
 
 ## Common step for msg and srv
 Now that we have made some new messages we need to make our package again:
 
-In your catkin workspace
-> roscd myfirstpackage
-> cd ../..
+In your catkin workspace,
+```
+roscd myfirstpackage
+```
+```
+cd ../..
+```
 
-> catkin_make                (makes (compiles) a ROS package)
-or another alternative:
-> catkin build               (makes (compiles) a ROS package in an isolated manner while maintaining efficiency due to parallelisation)
-
-> cd -
+To make (compile) a ROS package:
+```
+catkin_make
+```
+or use another alternative to make (compiles) a ROS package in an isolated manner while maintaining efficiency due to parallelisation:
+```
+catkin build
+```
+```
+cd -
+```
 
 Any .msg file in the msg directory will generate code for use in all supported languages:
-    The C++ message header file will be generated in ~/catkin_ws/devel/include/myfirstpackage/
-    The Python script will be created in ~/catkin_ws/devel/lib/python2.7/dist-packages/myfirstpackage/msg
-    The lisp file appears in ~/catkin_ws/devel/share/common-lisp/ros/myfirstpackage/msg/
+* The C++ message header file will be generated in ~/catkin_ws/devel/include/myfirstpackage/
+* The Python script will be created in ~/catkin_ws/devel/lib/python2.7/dist-packages/myfirstpackage/msg
+* The lisp file appears in ~/catkin_ws/devel/share/common-lisp/ros/myfirstpackage/msg/
 Similarly, any .srv files in the srv directory will have generated code in supported languages:
-    For C++, this will generate header files in the same directory as the message header files.
-    For Python and Lisp, there will be an 'srv' folder beside the 'msg' folders.
+* For C++, this will generate header files in the same directory as the message header files.
+* For Python and Lisp, there will be an 'srv' folder beside the 'msg' folders.
 
 ---
 
