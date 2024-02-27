@@ -424,14 +424,25 @@ rosparam get [param_name]
 >        background_g: 86
 >        background_r: 69
 
-> rosparam dump [file_name] [namespace]                        dump parameters to file to use later
-    > rosparam dump params.yaml
-> rosparam load [file_name] [namespace]                        load parameters from file
-    > rosparam load params.yaml copy_turtle                    load the previous yaml file into copy_turtle which is a new workspace
-> rosparam delete                      delete parameter
+To dump the parameters to a file to use later:
+```
+rosparam dump [file_name] [namespace]
+```
+* ```rosparam dump params.yaml```
 
-To the changes affect:
-> rosservice call /clear
+To load parameters from a file to our new workspace:
+```
+rosparam load [file_name] [namespace]
+```
+* ```rosparam load params.yaml copy_turtle```
+To delete parameter:
+```
+rosparam delete
+```
+To make the changes affect:
+```
+rosservice call /clear
+```
 
 ---
 
